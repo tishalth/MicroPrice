@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.Home_View"
+              xmlns:vm="clr-namespace:Check_CarPrice.ViewModels"
+             Title="{Binding Title}"
+    NavigationPage.HasBackButton="False">
+
+    <ContentPage.BindingContext>
+        <vm:Home_ViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <StackLayout   VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+        <!--<Image Source="bgDashBoard.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>-->
+
+        <ScrollView>
+            <!--<Frame BackgroundColor="White">-->
+            <StackLayout Orientation="Vertical" Spacing="50" WidthRequest="600">
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand"  Spacing="50">
+                    <Frame BackgroundColor="#F9E79F"  HeightRequest="150" WidthRequest="150" CornerRadius="150">
+                        <Frame BackgroundColor="#F1C40F" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="lbCarList" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="Car List" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                    <Frame BackgroundColor="#F9E79F" HeightRequest="150" WidthRequest="150" CornerRadius="150">
+                        <Frame BackgroundColor="#F1C40F" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="lbAddCarRequest" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="Request" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand"  Spacing="50">
+                    <Frame BackgroundColor="#F9E79F"  HeightRequest="150" WidthRequest="150" CornerRadius="150" >
+                        <Frame BackgroundColor="#F1C40F" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="lbWaitApprove" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="Wait Approve" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                    <Frame BackgroundColor="#F9E79F" HeightRequest="150" WidthRequest="150" CornerRadius="150">
+                        <Frame BackgroundColor="#F1C40F" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="lbApproved" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="Approved" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand"  Spacing="50">
+                    <Frame BackgroundColor="#F9E79F" HeightRequest="150" WidthRequest="150" CornerRadius="150">
+                        <Frame BackgroundColor="#F1C40F" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="lbNotApprove" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="Not Approve" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                    <Frame BackgroundColor="#F9E79F" HeightRequest="150" WidthRequest="150" CornerRadius="150">
+                        <Frame BackgroundColor="#F1C40F" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="lbUpdateList" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="25"/>
+                                <Label Text="Update List" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!--</Frame>-->
+        </ScrollView>
+    </StackLayout>
+
+
+</ContentPage>

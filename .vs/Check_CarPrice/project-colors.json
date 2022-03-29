@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3140e731-3da3-4939-9321-6045b8c0829f": {
+      "ProjectGuid": "3140e731-3da3-4939-9321-6045b8c0829f",
+      "DisplayName": "Check_CarPrice",
+      "ColorIndex": 0
+    },
+    "12b42c51-6e21-464e-bb04-c8c8b3f5e30c": {
+      "ProjectGuid": "12b42c51-6e21-464e-bb04-c8c8b3f5e30c",
+      "DisplayName": "Check_CarPrice.Android",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

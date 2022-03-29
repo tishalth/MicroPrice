@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.Other_View"
+              xmlns:vm="clr-namespace:Check_CarPrice.ViewModels"
+             Title="{Binding Title}"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.BindingContext>
+        <vm:Other_ViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout >
+            <Frame HeightRequest="400" CornerRadius="20" BackgroundColor="#FDEFD6">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout VerticalOptions="StartAndExpand">
+                        <StackLayout Padding="40">
+                            <Frame BackgroundColor="#F1C40F" HeightRequest="50" WidthRequest="50" CornerRadius="50">
+                                <ImageButton x:Name="btnLogout" Source="logout.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent" Clicked="btnLogout_Clicked"/>
+                            </Frame>
+                            <Label Text="ออกจากระบบ" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

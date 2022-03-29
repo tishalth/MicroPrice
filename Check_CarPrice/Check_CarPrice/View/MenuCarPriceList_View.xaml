@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.MenuCarPriceList_View"
+              NavigationPage.HasBackButton="False"
+           >
+    
+    <Grid>
+        
+        <StackLayout x:Name="PageMenu">
+            <Frame x:Name="frmData" BackgroundColor="#071131" >
+                <Label x:Name="lblData" Text="เมนู" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"></Label>
+            </Frame>
+            <StackLayout Margin="20,20,20,0" >
+                <ListView x:Name="lstMenu" ItemSelected="lstMenu_ItemSelected" HeightRequest="200">
+                    
+                    <!--<ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>ข้อมูลเบื้องต้น</x:String>
+                            <x:String>ข้อมูลตัวแม่</x:String>
+                            <x:String>ข้อมูลตัวลูก</x:String>
+                            <x:String>รูปภาพ</x:String>
+                        </x:Array>
+                    </ListView.ItemsSource>-->
+                </ListView>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Button x:Name="btnCheck" Text="ตรวจสอบ" TextColor="White" BackgroundColor="#071131" HeightRequest="40" CornerRadius="10" Clicked="btnCheck_Clicked"  IsVisible="false"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                <Button x:Name="btnOpenAppno" Text="อนุมัติราคา" BackgroundColor="#0E9D00" TextColor="White" HeightRequest="40" CornerRadius="10" Clicked="btnOpenAppno_Clicked"  Margin="40,0,0,0"  IsVisible="false"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                <Button x:Name="btnUpdate" Text="แก้ไข" BackgroundColor="#F1C40F" TextColor="Black" HeightRequest="40" CornerRadius="10" Clicked="btnUpdate_Clicked" Margin="40,0,0,0"  IsVisible="false"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                <Button x:Name="btnDelete" Text="ลบ" BackgroundColor="#AA0000" TextColor="White"  HeightRequest="40" CornerRadius="10" Clicked="btnDelete_Clicked"  Margin="40,0,0,0" IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Padding="30">
+                <Button x:Name="btnBack" Text="กลับ" BackgroundColor="LightGray" TextColor="Black"  HeightRequest="40" CornerRadius="10" Clicked="btnBack_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+            </StackLayout>
+        </StackLayout>
+        <Frame x:Name="PopupDelete" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" CornerRadius="10" HasShadow="True" HeightRequest="200" WidthRequest="300" BackgroundColor="AliceBlue" IsVisible="false">
+            <StackLayout Spacing="30" VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="กรุณากรอกรายละเอียดเพื่อยืนยันการลบรายการรถ" TextColor="Red" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Entry x:Name="enRemarkDelete"  WidthRequest="300" HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Button x:Name="btnDeleteFinally" Text="ลบ" BackgroundColor="#AA0000" TextColor="White"  HeightRequest="40" CornerRadius="10" Clicked="btnDeleteFinally_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                    <Button x:Name="btnCancel" Text="ยกเลิก" BackgroundColor="LightGray" TextColor="Black" HeightRequest="40" CornerRadius="10" Clicked="btnCancel_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+        <ContentView x:Name="PopupLoad" IsVisible="false">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame HeightRequest="200" WidthRequest="200" CornerRadius="20">
+                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        <ActivityIndicator x:Name="Load" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" IsRunning="True" WidthRequest="30" HeightRequest="30"/>
+                        <Label Text="Loading" TextColor="Black" FontSize="Medium"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.MenuCarPriceList.CarPriceListImage_View"
+              NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#071131">
+                <Label x:Name="lbTitle" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" TextColor="White" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+            </Frame>
+            <Frame BackgroundColor="White">
+                <ScrollView>
+                    <StackLayout>
+                        <Frame>
+                            <StackLayout Spacing="30" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="ทะเบียน" TextColor="HotPink"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label x:Name="lbLicno" TextColor="HotPink" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout x:Name="PicMas" IsVisible="false" Spacing="50">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="มุมหน้า-ด้านคนขับ" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg1_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="มุมหน้า-ด้านโดยสาร" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg2_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="มุมหลัง-ด้านคนขับ" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg3_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="รูปยกดั๊มพ์" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg26"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="พื้นกระบะและมุมข้างด้านใน" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg27" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="ภายในห้องโดยสาร(ถ่ายติดหัวเกียร์)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg4_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="หน้าปัดเลขไมค์" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg5_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="กระจังหน้า(ถ่ายติดทะเบียนรถ)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg6_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="ยกหัวเก๋ง(บริเวณใต้หัวเก๋ง)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg7_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="คอแซสซี(ฝั่งคนขับ)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg8_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="คอแซสซี(ฝั่งคนนั่ง)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg9_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="เครื่องยนต์ฝั่งคนขับ(เห็นทั้งหมด)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg10_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="เครื่องยนต์ฝั่งคนนั่ง(เห็นทั้งหมด)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg11_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="รูปเลขตัวรถ" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg28"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="แซสซี(ฝั่งคนขับ)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg12_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="แซสซี(ฝั่งคนนั่ง)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg13_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                                            <Label Text="รูปเกียร์" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg14_head" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                                            <Label Text="เพลากลาง/เพลาท้าย" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg15_head"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="รายการจดทะเบียน" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg23" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="บันทึกเจ้าหน้าที่" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg24"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="รายการเสียภาษี" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Mimg25" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <!--<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="มุมหลัง-ฝั่งซ้าย" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"/>
+                                            <Image x:Name="Mimg29"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>-->
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout x:Name="PicSub"  IsVisible="false" Spacing="50">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="มุมหน้า-ฝั่งขวา" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg16_tail" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="มุมหน้า-ฝั่งซ้าย" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg17_tail"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="มุมหลัง-ฝั่งขวา" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg18_tail" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="มุมหลัง-ฝั่งซ้าย" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg19_tail"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="รูปยกดั๊มพ์" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg26" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="พื้นกระบะและมุมข้างด้านใน" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg27"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="รูปเลขตัวรถ" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg28" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="รายการจดทะเบียน" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg23"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="บันทึกเจ้าหน้าที่" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg24" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="รายการเสียภาษี" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg25"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="แซสซี(ฝั่งขวา)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg20_tail" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="แซสซี(ฝั่งซ้าย)" TextColor="Black"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Image x:Name="Simg21_tail"  HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Margin="0,50,0,0" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                    <Button x:Name="btnBack" Text="กลับ" BackgroundColor="LightGray" TextColor="Black" HeightRequest="40" CornerRadius="10" Clicked="btnBack_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

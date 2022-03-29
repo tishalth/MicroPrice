@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.Login_View"
+             NavigationPage.HasBackButton="False" 
+             BackgroundImage="BG_New.jpg">
+
+    <Grid>
+
+        <!--<Image Source="BG_New.jpg" Aspect="AspectFill"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>-->
+        <StackLayout x:Name="PageLogin" VerticalOptions="CenterAndExpand">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Frame BackgroundColor="White" HasShadow="True" CornerRadius="30" HeightRequest="500" WidthRequest="400">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Image Source="logo.jpg"  VerticalOptions="FillAndExpand" HeightRequest="150"></Image>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label Text="S I G N   I N" TextColor="Black" FontSize="Title"  FontAttributes="Bold" ></Label>
+                        </StackLayout>
+                        <StackLayout Margin="20" HorizontalOptions="Fill" >
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="Fill">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="Transparent" CornerRadius="50" WidthRequest="35" Padding="0" Margin="7" HorizontalOptions="Start">
+                                        <Image Source="user.jpg"  VerticalOptions="FillAndExpand"></Image>
+                                    </Frame>
+                                    <Entry x:Name="txtusername"  HorizontalTextAlignment="Center" Placeholder="u s e r n a m e" TextColor="Black" FontSize="Small" HorizontalOptions="FillAndExpand" FontFamily="PlexSans"></Entry>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="Fill">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="Transparent" CornerRadius="50" WidthRequest="35" Padding="0" Margin="7" HorizontalOptions="Start">
+                                        <Image Source="key.jpg"  VerticalOptions="FillAndExpand"></Image>
+                                    </Frame>
+                                    <Entry x:Name="txtpassword" HorizontalTextAlignment="Center" IsPassword="True" Placeholder="p a s s w o r d" TextColor="Black" FontSize="Small" HorizontalOptions="FillAndExpand" FontFamily="PlexSans"></Entry>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout  HorizontalOptions="Fill">
+                            <Button x:Name="btnlogin" Text="L O G I N" Clicked="btnlogin_Clicked"  BackgroundColor="#071131" FontSize="Small"  HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" CornerRadius="10" FontFamily="PlexSans"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Margin="0,0,0,30" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+            <!--<Label Text="V 0 . 5 0" Margin="0,0,0,20" TextColor="White"  FontSize="Small" FontFamily="PlexSans"/>-->
+            <Label Text="V 1 . 1 8" Margin="0,0,0,20" TextColor="White"  FontSize="Small" FontFamily="PlexSans"/>
+        </StackLayout>
+
+
+        <ContentView x:Name="PopupLoad" IsVisible="false">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame HeightRequest="200" WidthRequest="200" CornerRadius="20">
+                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        <ActivityIndicator x:Name="Load" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" IsRunning="True" WidthRequest="30" HeightRequest="30"/>
+                        <Label Text="Loading" TextColor="Black" FontSize="Medium" FontFamily="PlexSans"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+
+    </Grid>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#071131</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

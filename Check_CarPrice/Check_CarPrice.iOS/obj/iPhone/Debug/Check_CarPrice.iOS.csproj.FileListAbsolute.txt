@@ -1,0 +1,8 @@
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\optimized\
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\Check_CarPrice.iOS.csprojAssemblyReference.cache
+D:\work\Dev\Check_CarPrice\Check_CarPrice\Check_CarPrice.iOS\obj\iPhone\Debug\Check_CarPrice.iOS.csproj.CoreCompileInputs.cache

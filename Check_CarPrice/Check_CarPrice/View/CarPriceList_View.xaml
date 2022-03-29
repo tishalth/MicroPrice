@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.CarPriceList_View"
+              xmlns:vm="clr-namespace:Check_CarPrice.ViewModels"
+             
+             Title="{Binding Title}"
+    NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <vm:CarPriceList_ViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <vm:TextToColorConverter x:Key="TextToColorConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout x:Name="PageCarPriceList">
+                <StackLayout Padding="20" x:Name="frmCarpriceList" >
+                    <StackLayout Orientation="Horizontal"  >
+                        <Label Text="สถานะใบคำขอรถ" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"></Label>
+                        <Picker  x:Name="pkFilter" Title="กรุณาเลือก" Margin="20,0,0,0" HorizontalTextAlignment="Center" WidthRequest="250" SelectedIndexChanged="pkFilter_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                            <Picker.Items>
+                                <x:String>ทั้งหมด</x:String>
+                                <x:String>รออนุมัติ</x:String>
+                                <x:String>รอตรวจสอบ</x:String>
+                                <x:String>พิจารณายอดสินเชื่อเร่งด่วน</x:String>
+                                <x:String>ดำเนินการปรับปรุง,เปลี่ยน,ซ่อมแซม</x:String>
+                                <x:String>ขออนุมัติยอดสินเชื่อด้วยหลักเกณฑ์อื่น</x:String>
+                                <x:String>รายละเอียดไม่ถูกต้อง</x:String>
+                                <x:String>รอประเมินราคาและอนุมัติ</x:String>
+                                <x:String>ไม่ผ่านหลักเกณฑ์</x:String>
+                                <x:String>อนุมัติแล้ว</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Button x:Name="btnInsert" Text="เพิ่มรายการรถ"  TextColor="White" CornerRadius="10" BackgroundColor="#071131 " Margin="20,0,0,0" Clicked="btnInsert_Clicked" 
+                        HeightRequest="40" HorizontalOptions="EndAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" >
+                        </Button>
+                    </StackLayout>
+                    <!--<StackLayout Orientation="Horizontal"  >
+                        <Label Text="ค้นหาเลขทะเบียน" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"></Label>
+                        <Entry x:Name="enSearchlicno" Margin="20,0,0,0" HorizontalTextAlignment="Center" WidthRequest="250" TextChanged="enSearchlicno_TextChanged"></Entry>
+                    </StackLayout>-->
+                </StackLayout>
+                <StackLayout>
+                    <Frame x:Name="frmData" BackgroundColor="#F1C40F " HeightRequest="20" >
+                        <Label x:Name="lblData" TextColor="Black" HorizontalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"></Label>
+                    </Frame>
+                    <ListView x:Name="lstData" SelectedItem="{Binding licno}"  RowHeight="70" ItemSelected="lstData_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+                                    <StackLayout Padding="10" >
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding licno}" TextColor="RoyalBlue"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    <Label Text="{Binding name_head_tail}" TextColor="DarkOrange" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label TextColor="Black" Text="{Binding create_date,StringFormat='{0:dd/MM/yyyy}'}" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    <Label TextColor="Black" Text="{Binding Branch_Owner}" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" >
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <ImageButton Source="circle.png" BackgroundColor="Transparent" HeightRequest="20" IsVisible="false"/>
+                                                    <ImageButton Source="dash.png" BackgroundColor="Transparent" HeightRequest="20" IsVisible="false"/>
+                                                    <Label Text="{Binding status_appcar}" TextColor="{Binding status_appcar,Converter={StaticResource TextToColorConverter}}"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+            <ContentView x:Name="PopupLoad" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Frame HeightRequest="200" WidthRequest="200" CornerRadius="20">
+                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <ActivityIndicator x:Name="Load" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" IsRunning="True" WidthRequest="30" HeightRequest="30"/>
+                            <Label Text="Loading" TextColor="Black" FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>

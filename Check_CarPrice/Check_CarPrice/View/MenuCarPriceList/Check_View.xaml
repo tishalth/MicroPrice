@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.MenuCarPriceList.Check_View"
+             NavigationPage.HasBackButton="False"
+             xmlns:vm="clr-namespace:Check_CarPrice.ViewModels">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <Frame BackgroundColor="#071131" HasShadow="False">
+                    <Label Text="CHECK" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White" FontFamily="PlexSans" FontSize="18"/>
+                </Frame>
+                <Frame BackgroundColor="White">
+                    <ScrollView>
+                        <StackLayout x:Name="PageCheck">
+                            <Frame x:Name="Page1">
+                                <StackLayout Padding="30" Margin="50,0,0,0" Spacing="30" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label Text="ข้อมูลรถ :"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="รหัสพนักงาน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand"  WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbCreateby"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ชื่อ-สกุล พนักงาน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbEmName"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="รหัสคำขอ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbApplno"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="สาขา"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbBranchName"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ประเภทสินเชื่อ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbTypeCredit"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ดีลเลอร์ตัวแม่-ตัวลูก"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbTypeDealer"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ดีลเลอร์ตัวแม่ :"   HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ผู้ติดต่อ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbTypeContact"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout x:Name="con1" IsVisible="false" Spacing="30">
+                                        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="นายหน้า" FontAttributes="Bold" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue"/>
+                                        </StackLayout>-->
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ชื่อ-นามสกุล"   HorizontalOptions="StartAndExpand"  WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbNameDealerAgent1" WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="รหัสคู่ค้า"   HorizontalOptions="StartAndExpand"  WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbCodeDealerAgent1" WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout x:Name="con2" IsVisible="false" Spacing="30"  >
+                                        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="คู่ค้า/เต๊นท์" FontAttributes="Bold"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue"/>
+                                        </StackLayout>-->
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ชื่อคู่ค้า"   HorizontalOptions="StartAndExpand"   WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbNameDealerAgent2"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="รหัสคู่ค้า"   HorizontalOptions="StartAndExpand"  WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbCodeDealerAgent2"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout x:Name="con3" IsVisible="false" Spacing="30" >
+                                        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="บุคคลแนะนำ" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" FontAttributes="Bold"  TextColor="DarkBlue"/>
+                                        </StackLayout>-->
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ผู้แนะนำ"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbTypePerson"  WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label x:Name="lbLeft1" HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbRight1"  WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label x:Name="lbLeft2"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbRight2"  WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout x:Name="Dealer2" IsVisible="false" Spacing="30" >
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                            <Label Text="ดีลเลอร์ตัวลูก :"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ผู้ติดต่อ"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Label x:Name="lbTypeContactD2" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout x:Name="con1D2" IsVisible="false" Spacing="30">
+                                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="นายหน้า" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue"/>
+                                            </StackLayout>-->
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="ชื่อ-นามสกุล"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbNameDealerAgent1D2" WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="รหัสคู่ค้า"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbCodeDealerAgent1D2" WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout x:Name="con2D2" IsVisible="false" Spacing="30"  HorizontalOptions="FillAndExpand" >
+                                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="คู่ค้า/เต๊นท์" FontAttributes="Bold"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue"/>
+                                            </StackLayout>-->
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="ชื่อคู่ค้า"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbNameDealerAgent2D2"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="รหัสคู่ค้า"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbCodeDealerAgent2D2"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout x:Name="con3D2" IsVisible="false" Spacing="30" >
+                                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="บุคคลแนะนำ" FontAttributes="Bold"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue"/>
+                                            </StackLayout>-->
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="ผู้แนะนำ"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbTypePersonD2"  WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label x:Name="lbLeft1D2" HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbRight1D2"  WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label x:Name="lbLeft2D2"   HorizontalOptions="StartAndExpand" WidthRequest="150"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Label x:Name="lbRight2D2"  WidthRequest="250"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="หมายเหตุ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbRemark"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout x:Name="RemarkDate" Orientation="Horizontal" HorizontalOptions="FillAndExpand" IsVisible="false">
+                                        <Label Text="วันที่ซ่อมแล้วเสร็จ"   HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbRemarkDate"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout x:Name="RemarkDes" Orientation="Horizontal" HorizontalOptions="FillAndExpand" IsVisible="false">
+                                        <Label Text="อื่นๆ"   HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbRemarkDescription"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="แคมเปญ"   HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbCampaign" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label x:Name="lbLeftRemarkDate" Text="วันที่แล้วเสร็จ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" IsVisible="false"/>
+                                        <Label x:Name="lbRemarkdate"   HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250"  TextColor="Black"/>
+                                    </StackLayout>-->
+                                </StackLayout>
+                            </Frame>
+                            <Frame x:Name="Page2">
+                                <StackLayout Padding="30" Spacing="30" Margin="50,0,0,0" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label Text="ตัวแม่ : "  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ทะเบียน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMlicno"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="จังหวัด"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMProvince"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="เลขตัวรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMChasno"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="เลขเครื่องยนต์"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMEngno"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ยี่ห้อรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMBrand"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="เชื้อเพลิง"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMFuel"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ประเภท"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMTypeCar"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ลักษณะรถ :"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="กลุ่มรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMGrpCar"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ลักษณะกระบะ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMPickup"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ลักษณะพิเศษ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMSpecial"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ราคาขายตัวแม่"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black"/>
+                                        <Label x:Name="lbMHeadPrice"    HorizontalOptions="Center" Text="{Binding StringFormat='{0:N0}'}"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="อุปกรณ์เสริม"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMAccessory"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ปีจดทะเบียน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbMYearCar"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <Frame x:Name="Page3">
+                                <StackLayout Padding="30" Spacing="30" Margin="50,0,0,0" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="ตัวลูก :"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ทะเบียน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSlicno"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="จังหวัด"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSProvince"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="เลขตัวรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSEngno"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ประเภทรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSType"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ลักษณะรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="กลุ่มรถ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSGrpCar"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ลักษณะกระบะ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSPickup"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ลักษณะพิเศษ"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSSpecial"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ราคาขายตัวลูก"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSHeadPrice" Text="{Binding StringFormat='{0:N0}'}" HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="ปีจดทะเบียน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" WidthRequest="150" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Label x:Name="lbSYearCar"    HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <Frame x:Name="Page4" HasShadow="False">
+                                <StackLayout Padding="30"  Margin="50,0,0,0" Spacing="20">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="พิจารณา"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <Picker x:Name="pkMStatus" Title="กรุณาเลือก" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding cde_status_appcar}" ItemsSource="{Binding cde_status_appcar}" ItemDisplayBinding="{Binding status_appcar}" SelectedIndexChanged="pkMStatus_SelectedIndexChanged"/>
+                                    </StackLayout>
+                                    <StackLayout x:Name="stStatus" Spacing="20">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="นโยบาย"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"  />
+                                            <Picker x:Name="pkPolicy"  Title="กรุณาเลือก" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="220" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding cde_policy}" ItemsSource="{Binding cde_policy}" ItemDisplayBinding="{Binding name_policy}"/>
+                                            <ImageButton x:Name="ibtnClearPolicy" Clicked="ibtnClearPolicy_Clicked"  Source="xmark.png" BackgroundColor="Transparent" HeightRequest="10" WidthRequest="20" CornerRadius="4" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="รุ่นรถ"    HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"   FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Entry x:Name="enModel"   WidthRequest="250" HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ประเภท"    HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                            <Picker x:Name="pkTypeCar" Title="กรุณาเลือก" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding cde_typ_car}" ItemsSource="{Binding cde_typ_car}" ItemDisplayBinding="{Binding name_typ_car}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ปีจดทะเบียน"    HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                            <Entry x:Name="enYearCar" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="สถานะ"   HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"  />
+                                            <Entry x:Name="enStatus" IsReadOnly="true"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="รหัสรถ"    HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                            <Entry x:Name="enCdeCar"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="หมายเหตุ"    HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                        <Entry x:Name="enRemark"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start"  TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                    <StackLayout x:Name="stFinamt" Spacing="20">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label x:Name="lbFinamt"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="DarkBlue" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ยอดจัด"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"  />
+                                            <Entry x:Name="enFinamt" Keyboard="Numeric"  WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                <Entry.Behaviors>
+                                                    <vm:NumberMaskBehavior/>
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ราคากลาง"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"  />
+                                            <Entry x:Name="enMiddlePrice" Keyboard="Numeric" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                <Entry.Behaviors>
+                                                    <vm:NumberMaskBehavior/>
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="รายการผ่อนชำระที่ 1 :" TextColor="DarkBlue"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ระยะเวลา (เดือน)"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                            <Entry x:Name="enDistance01" Keyboard="Telephone" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ดอกเบี้ย (%)"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"  />
+                                            <Entry x:Name="enRate01" Keyboard="Numeric" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                <Entry.Behaviors>
+                                                    <vm:NumberMaskBehavior/>
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="รายการผ่อนชำระที่ 2 :" TextColor="DarkBlue"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ระยะเวลา (เดือน)"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                            <Entry x:Name="enDistance02" Keyboard="Telephone" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="ดอกเบี้ย (%)"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black"  WidthRequest="150" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"  />
+                                            <Entry x:Name="enRate02" Keyboard="Numeric" WidthRequest="250"  HorizontalOptions="Center"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                <Entry.Behaviors>
+                                                    <vm:NumberMaskBehavior/>
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30">
+                                <Button x:Name="btnCheck" Text="ตรวจสอบ" BackgroundColor="#071131" TextColor="White" HeightRequest="40" CornerRadius="10" Clicked="btnCheck_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                <Button x:Name="btnCancel" Text="ยกเลิก" BackgroundColor="LightGray" TextColor="Black" HeightRequest="40" CornerRadius="10" Clicked="btnCancel_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+            </StackLayout>
+            <ContentView x:Name="PopupLoad" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Frame HeightRequest="200" WidthRequest="200" CornerRadius="20">
+                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <ActivityIndicator x:Name="Load" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" IsRunning="True" WidthRequest="30" HeightRequest="30"/>
+                            <Label Text="Loading" TextColor="Black" FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

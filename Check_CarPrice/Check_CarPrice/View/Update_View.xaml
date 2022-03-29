@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.Update_View">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <!--General Data-->
+                    <StackLayout x:Name="page1">
+                        <StackLayout Padding="30" Spacing="20">
+                            <Grid RowSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="รหัสพนักงาน"></Label>
+                                <Entry Grid.Row="0" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="1" Grid.Column="0" Text="ชื่อ-สกุล"></Label>
+                                <Entry Grid.Row="1" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="2" Grid.Column="0" Text="รหัสคำขอ"></Label>
+                                <Entry Grid.Row="2" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="3" Grid.Column="0" Text="สาขา"></Label>
+                                <Entry Grid.Row="3" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="4" Grid.Column="0" Text="ประเภทสินเชื่อ"></Label>
+                                <Picker Grid.Row="4" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="ดีลเลอร์ตัวแม่-ลูก"></Label>
+                                <Entry Grid.Row="5" Grid.Column="1" IsReadOnly="True"></Entry>
+                            </Grid>
+
+                            <!--ตัวแม่-->
+                            <Grid RowSpacing="20" BackgroundColor="LightGray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="ตัวแม่"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="ผู้ติดต่อ"></Label>
+                                <Entry Grid.Row="1" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="นายหน้า"></Label>
+                                <Label Grid.Row="3" Grid.Column="0" Text="txt1"></Label>
+                                <Entry Grid.Row="3" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="4" Grid.Column="0" Text="txt2"></Label>
+                                <Entry Grid.Row="4" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="5" Grid.Column="0" Text="txt3"></Label>
+                                <Entry Grid.Row="5" Grid.Column="1" IsReadOnly="True"></Entry>
+                            </Grid>
+
+                            <!--ตัวลูก-->
+                            <Grid RowSpacing="20" BackgroundColor="LightGray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="ตัวลูก"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="ผู้ติดต่อ"></Label>
+                                <Entry Grid.Row="1" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="นายหน้า"></Label>
+                                <Label Grid.Row="3" Grid.Column="0" Text="txt1"></Label>
+                                <Entry Grid.Row="3" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="4" Grid.Column="0" Text="txt2"></Label>
+                                <Entry Grid.Row="4" Grid.Column="1" IsReadOnly="True"></Entry>
+                                <Label Grid.Row="5" Grid.Column="0" Text="txt3"></Label>
+                                <Entry Grid.Row="5" Grid.Column="1" IsReadOnly="True"></Entry>
+                            </Grid>
+
+                            <Grid RowSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="หมายเหตุ"></Label>
+                                <Picker Grid.Row="0" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="แคมเปญ"></Label>
+                                <Picker Grid.Row="1" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="ตัวแม่-ตัวลูก"></Label>
+                                <Entry Grid.Row="2" Grid.Column="1" IsReadOnly="True"></Entry>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Master-->
+                    <StackLayout x:Name="page2">
+
+                        <StackLayout Padding="30" Spacing="20">
+                            <Grid RowSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="ข้อมูลตัวแม่"></Label>
+                                <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="กรอกข้อมูลให้ตรงตามหน้ารายการจดทะเบียนเท่านั้น" TextColor="Red"></Label>
+                                <Label Grid.Row="2" Grid.Column="0" Text="เลขทะเบียน"></Label>
+                                <Entry Grid.Row="2" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="3" Grid.Column="0" Text="จังหวัด"></Label>
+                                <Picker Grid.Row="3" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="เลขตัวรถ"></Label>
+                                <Entry Grid.Row="4" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="5" Grid.Column="0" Text="เลขเครื่องยนต์"></Label>
+                                <Entry Grid.Row="5" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="6" Grid.Column="0" Text="ยี่ห้อรถ"></Label>
+                                <Picker Grid.Row="6" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="เชื้อเพลิง"></Label>
+                                <Picker Grid.Row="7" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="8" Grid.Column="0" Text="ประเภท"></Label>
+                                <Picker Grid.Row="8" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="9" Grid.Column="0" Text="ลักษณะรถ"></Label>
+                                <Picker Grid.Row="9" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="10" Grid.Column="0" Text="กลุ่มรถ"></Label>
+                                <Picker Grid.Row="10" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="11" Grid.Column="0" Text="ลักษณะกระบะ"></Label>
+                                <Picker Grid.Row="11" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="12" Grid.Column="0" Text="ลักษณะพิเศษ"></Label>
+                                <Picker Grid.Row="12" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="13" Grid.Column="0" Text="ราคาขายตัวแม่"></Label>
+                                <Entry Grid.Row="13" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="14" Grid.Column="0" Text="อุปกรณ์เสริม"></Label>
+                                <Picker Grid.Row="14" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="15" Grid.Column="0" Text="ปีจดทะเบียน (พ.ศ.)"></Label>
+                                <Entry Grid.Row="15" Grid.Column="1" ></Entry>
+                            </Grid>
+                            <Label HorizontalOptions="CenterAndExpand" Text="แนบรูปภาพ"></Label>
+                            <Label HorizontalOptions="CenterAndExpand" Text="กรุณาเลือกรูปภาพให้ตรงหมวดหมู่" TextColor="Red"></Label>
+                            <Label HorizontalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ช่วยเหลือ" TextColor="Gray" TextDecorations="Underline">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://drive.google.com/file/d/1cNyDWj21QdFoCt_Te5eNYxFBoQIw2VJI/view?usp=sharing" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Grid RowSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="มุมหน้า-ด้านคนขับ"></Label>
+                                <Button Grid.Row="0" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="1" Grid.Column="0" Text="มุมหน้า-ด้ายโดยสาร"></Label>
+                                <Button Grid.Row="1" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="2" Grid.Column="0" Text="มุมหลัง-ด้านคนขับ"></Label>
+                                <Button Grid.Row="2" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="3" Grid.Column="0" Text="รูปยกดั๊มพ์"></Label>
+                                <Button Grid.Row="3" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="4" Grid.Column="0" Text="พื้นกระบะมุมข้างด้านใน"></Label>
+                                <Button Grid.Row="4" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="5" Grid.Column="0" Text="ภายในห้องโดยสาร(ถ่ายติดหัวเกียร์)"></Label>
+                                <Button Grid.Row="5" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="6" Grid.Column="0" Text="หน้าปัดเลขไมล์"></Label>
+                                <Button Grid.Row="6" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="7" Grid.Column="0" Text="กระจังหน้า(ถ่ายติดทะเบียนรถ)"></Label>
+                                <Button Grid.Row="7" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="8" Grid.Column="0" Text="ยกหัวเก๋ง(บริเวณใต้หัวเก๋ง)"></Label>
+                                <Button Grid.Row="8" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="9" Grid.Column="0" Text="คอแซสซี(ฝั่งคนขับ)"></Label>
+                                <Button Grid.Row="9" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="10" Grid.Column="0" Text="คอแซสซี(ฝั่งคนนั่ง)"></Label>
+                                <Button Grid.Row="10" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="11" Grid.Column="0" Text="เครื่องยนต์ฝั่งคนขับ(เห็นทั้งหมด)"></Label>
+                                <Button Grid.Row="11" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="12" Grid.Column="0" Text="เครื่องยนต์ฝั่งคนนั่ง(เห็นทั้งหมด)"></Label>
+                                <Button Grid.Row="12" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="13" Grid.Column="0" Text="รูปเลขตัวรถ"></Label>
+                                <Button Grid.Row="13" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="14" Grid.Column="0" Text="แซสซี(ฝั่งคนขับ)"></Label>
+                                <Button Grid.Row="14" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="15" Grid.Column="0" Text="แซสซี(ฝั่งคนนั่ง)"></Label>
+                                <Button Grid.Row="15" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="16" Grid.Column="0" Text="รูปเกียร์"></Label>
+                                <Button Grid.Row="16" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="17" Grid.Column="0" Text="เพลากลาง เพลาท้าย"></Label>
+                                <Button Grid.Row="17" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="18" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand" Text="เอกสารเล่มทะเบียน"></Label>
+                                <Label Grid.Row="19" Grid.Column="0" Text="รายการจดทะเบียน"></Label>
+                                <Button Grid.Row="19" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="20" Grid.Column="0" Text="บันทึกเจ้าหน้าที่"></Label>
+                                <Button Grid.Row="20" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="21" Grid.Column="0" Text="รายการเสียภาษี"></Label>
+                                <Button Grid.Row="21" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+
+                            </Grid>
+                        </StackLayout>
+
+                    </StackLayout>
+                    <!--Sub Master-->
+                    <StackLayout x:Name="page3">
+                        <StackLayout Padding="30" Spacing="20">
+                            <Grid RowSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="ข้อมูลตัวลูก"></Label>
+                                <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Text="กรอกข้อมูลให้ตรงตามหน้ารายการจดทะเบียนเท่านั้น" TextColor="Red"></Label>
+                                <Label Grid.Row="2" Grid.Column="0" Text="เลขทะเบียน"></Label>
+                                <Entry Grid.Row="2" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="3" Grid.Column="0" Text="จังหวัด"></Label>
+                                <Picker Grid.Row="3" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="เลขตัวรถ"></Label>
+                                <Entry Grid.Row="4" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="5" Grid.Column="0" Text="ลักษณะรถ"></Label>
+                                <Picker Grid.Row="5" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="ลักษณะกระบะ"></Label>
+                                <Picker Grid.Row="6" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="ลักษณะพิเศษ"></Label>
+                                <Picker Grid.Row="7" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="8" Grid.Column="0" Text="ประเภท"></Label>
+                                <Picker Grid.Row="8" Grid.Column="1" Title="กรุณาเลือก"/>
+                                <Label Grid.Row="9" Grid.Column="0" Text="ราคาขายตัวลูก"></Label>
+                                <Entry Grid.Row="9" Grid.Column="1" ></Entry>
+                                <Label Grid.Row="10" Grid.Column="0" Text="ปีจดทะเบียน (พ.ศ.)"></Label>
+                                <Entry Grid.Row="10" Grid.Column="1" ></Entry>
+                            </Grid>
+                            <Label HorizontalOptions="CenterAndExpand" Text="แนบรูปภาพ"></Label>
+                            <Label HorizontalOptions="CenterAndExpand" Text="กรุณาเลือกรูปภาพให้ตรงหมวดหมู่" TextColor="Red"></Label>
+                            <Label HorizontalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="ช่วยเหลือ" TextColor="Gray" TextDecorations="Underline">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://drive.google.com/file/d/1cNyDWj21QdFoCt_Te5eNYxFBoQIw2VJI/view?usp=sharing" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Grid RowSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="มุมหน้า-ฝั่งขวา"></Label>
+                                <Button Grid.Row="0" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="1" Grid.Column="0" Text="มุมหน้า-ฝั่งซ้าย"></Label>
+                                <Button Grid.Row="1" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="2" Grid.Column="0" Text="มุมหลัง-ฝั่งขวา"></Label>
+                                <Button Grid.Row="2" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="3" Grid.Column="0" Text="มุมหลัง-ฝั่งซ้าย"></Label>
+                                <Button Grid.Row="3" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="4" Grid.Column="0" Text="รูปยกดั๊มพ์"></Label>
+                                <Button Grid.Row="4" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="5" Grid.Column="0" Text="พื้นกระบะและแผงข้างด้านใน"></Label>
+                                <Button Grid.Row="5" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="6" Grid.Column="0" Text="รูปเลขตัวรถ"></Label>
+                                <Button Grid.Row="6" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="7" HorizontalOptions="CenterAndExpand" Text="เอกสารเล่มทะเบียน"></Label>
+                                <Label Grid.Row="8" Grid.Column="0" Text="รายการจดทะเบียน"></Label>
+                                <Button Grid.Row="8" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="9" Grid.Column="0" Text="บันทึกเจ้าหน้าที่"></Label>
+                                <Button Grid.Row="9" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="10" Grid.Column="0" Text="รายการเสียภาษี"></Label>
+                                <Button Grid.Row="10" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="11" Grid.Column="0" Text="แซสซีฝั่งขวา"></Label>
+                                <Button Grid.Row="11" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                                <Label Grid.Row="12" Grid.Column="0" Text="แซสซีฝั่งซ้าย"></Label>
+                                <Button Grid.Row="12" Grid.Column="1" class="button-image" Text="CHOOSE FILE"></Button>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Button-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30">
+                        <Button Text="บันทึก" BackgroundColor="LawnGreen"></Button>
+                        <Button Text="ยกเลิก"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

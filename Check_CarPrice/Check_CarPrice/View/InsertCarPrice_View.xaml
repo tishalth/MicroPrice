@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Check_CarPrice.View.InsertCarPrice_View"
+             xmlns:vm="clr-namespace:Check_CarPrice.ViewModels"
+             Title="{Binding Title}"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="White" 
+             >
+
+    <ContentPage.BindingContext>
+        <vm:InsertCarPrice_ViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Frame x:Name="PageInsertCarPrice"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasShadow="False">
+                <ScrollView>
+                    <StackLayout>
+                        <Frame x:Name="frmPage1" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" IsVisible="false" HasShadow="False">
+                            <!---->
+                            <!--<ScrollView>-->
+                            <StackLayout Padding="40" Spacing="20" WidthRequest="600">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="รหัสพนักงาน"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry x:Name="enPersonal_code" WidthRequest="250" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" IsReadOnly="True" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="ชื่อ-สกุล"   HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry x:Name="enPersonal_Name" WidthRequest="250" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" IsReadOnly="True" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="รหัสคำขอ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry x:Name="enAppno" WidthRequest="250" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" IsReadOnly="True" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="สาขา"  HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry x:Name="enBranchName" WidthRequest="250" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" IsReadOnly="True" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="ประเภทสินเชื่อ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkLoanType" Title="กรุณาเลือก" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"
+                                    SelectedItem="{Binding prmcde}" ItemsSource="{Binding prmcde}" ItemDisplayBinding="{Binding USEDCARTYP}" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="ดีลเลอร์ตัวแม่-ตัวลูก" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkDealerType" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250" SelectedIndexChanged="pkDealerType_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                        <Picker.Items>
+                                            <x:String>บุคคลเดียวกัน</x:String>
+                                            <x:String>คนละดีลเลอร์</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                                <!--Master-->
+                                <Frame x:Name="frmMaster" BackgroundColor="LightGray" CornerRadius="5" WidthRequest="600"  HorizontalOptions="CenterAndExpand"  IsVisible="false" HasShadow="False">
+                                    <StackLayout Spacing="20">
+                                        <StackLayout>
+                                            <Label Text="ตัวแม่" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="ผู้ติดต่อ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Picker x:Name="pkConnectionMaster" Title="กรุณาเลือก" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250" SelectedIndexChanged="pkConnectionMaster_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                <Picker.Items>
+                                                    <x:String>นายหน้า</x:String>
+                                                    <x:String>คู่ค้า/เต็นท์</x:String>
+                                                    <x:String>บุคคลแนะนำ</x:String>
+                                                </Picker.Items>
+                                            </Picker>
+                                        </StackLayout>
+                                        <!--Contact_Master-->
+
+                                        <Frame x:Name="frmMasContact1" BackgroundColor="White" CornerRadius="5" WidthRequest="500" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                            <StackLayout  Spacing="20">
+                                                <StackLayout VerticalOptions="StartAndExpand">
+                                                    <Label TextColor="Black" Text="นายหน้า" HorizontalOptions="StartAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label TextColor="Black" Text="ชื่อ-สกุล" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionMaster1Name" TextChanged="sbConnectionMaster1Name_TextChanged" WidthRequest="250" HorizontalTextAlignment="Start"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionMaster1Name"  ItemTapped="lstConnectionMaster1Name_ItemTapped" WidthRequest="100" HeightRequest="100" IsVisible="false"/>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label TextColor="Black" Text="รหัสคู่ค้า" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionMaster1Code" TextChanged="sbConnectionMaster1Code_TextChanged"  WidthRequest="250"  HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionMaster1Code"  ItemTapped="lstConnectionMaster1Code_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false"/>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame x:Name="frmMasContact2" BackgroundColor="White"  CornerRadius="5" WidthRequest="500" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                            <StackLayout  Spacing="20">
+                                                <StackLayout>
+                                                    <Label Text="คู่ค้า/เต็นท์" HorizontalOptions="StartAndExpand"   VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label Text="ชื่อคู่ค้า" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionMaster2Name" TextChanged="sbConnectionMaster2Name_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionMaster2Name" IsVisible="false"  ItemTapped="lstConnectionMaster2Name_ItemTapped"  WidthRequest="100" HeightRequest="100"  />
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label Text="รหัสคู่ค้า" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionMaster2Code" TextChanged="sbConnectionMaster2Code_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionMaster2Code" ItemTapped="lstConnectionMaster2Code_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false"/>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame x:Name="frmMasContact3" BackgroundColor="White" CornerRadius="5" WidthRequest="500" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                            <StackLayout  Spacing="20">
+                                                <StackLayout>
+                                                    <Label Text="บุคคลแนะนำ"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="ผู้แนะนำ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    <Picker x:Name="pkMasAdvisorType" Title="กรุณาเลือก"  VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start"  HorizontalOptions="EndAndExpand" WidthRequest="250" SelectedIndexChanged="pkMasAdvisorType_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                        <Picker.Items>
+                                                            <x:String>ลูกค้าเก่า</x:String>
+                                                            <x:String>ลูกค้าใหม่ติดต่อมาเอง</x:String>
+                                                            <x:String>พนักงาน</x:String>
+                                                        </Picker.Items>
+                                                    </Picker>
+                                                </StackLayout>
+                                                <StackLayout x:Name="stMasAdvisorType1" IsVisible="false" Spacing="20">
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                            <Label x:Name="lbMasAdvisorType1" Text="ชื่อ-นามสกุล" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbMasAdvisorType1Name" TextChanged="sbMasAdvisorType1Name_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstMasAdvisorType1Name"  ItemTapped="lstMasAdvisorType1Name_ItemTapped"  WidthRequest="100" HeightRequest="100"  IsVisible="false"/>
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                            <Label x:Name="lbMasAdvisorType1Appno"  Text="เลขที่สัญญา" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" >
+                                                            <SearchBar x:Name="sbMasAdvisorType1Appno" TextChanged="sbMasAdvisorType1Appno_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstMasAdvisorType1Appno" ItemTapped="lstMasAdvisorType1Appno_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false" />
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout x:Name="stMasAdvisorType2" IsVisible="false" Spacing="20">
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <Label TextColor="Black" x:Name="lbMasAdvisorType2Name" Text="ชื่อ-นามสกุล" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Entry  x:Name="enMasAdvisorType2Name" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Start" />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label TextColor="Black" x:Name="lbMasAdvisorType2Social"  Text="ช่องทางลูกค้าติดต่อ"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Picker x:Name="pkSocialtype" Title="กรุณาเลือก"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Start"  WidthRequest="250" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" >
+                                                            <Picker.Items>
+                                                                <x:String>Walk in</x:String>
+                                                                <x:String>Line</x:String>
+                                                                <x:String>โทรศัพท์</x:String>
+                                                                <x:String>Facebook</x:String>
+                                                            </Picker.Items>
+                                                        </Picker>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout x:Name="stMasAdvisorType3" IsVisible="false" Spacing="20">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                            <Label TextColor="Black" x:Name="lbMasAdvisorType3EmNo" Text="รหัสพนักงาน" HorizontalOptions="StartAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbMasAdvisorType3EmNo" TextChanged="sbMasAdvisorType3EmNo_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstMasAdvisorType3EmNo" ItemTapped="lstMasAdvisorType3EmNo_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false" />
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                            <Label TextColor="Black" x:Name="lbMasAdvisorType3Name" Text="ชื่อ-นามสกุล" HorizontalOptions="StartAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbMasAdvisorType3Name" TextChanged="sbMasAdvisorType3Name_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstMasAdvisorType3Name" ItemTapped="lstMasAdvisorType3Name_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false" />
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </Frame>
+
+                                <!--SubMaster-->
+
+                                <Frame x:Name="frmSubMaster" BackgroundColor="#d8d8d6" CornerRadius="5"   WidthRequest="600" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                    <StackLayout  Spacing="20">
+                                        <StackLayout>
+                                            <Label TextColor="Black" Text="ตัวลูก" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label TextColor="Black" Text="ผู้ติดต่อ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            <Picker x:Name="pkConnectionSubMaster" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250" SelectedIndexChanged="pkConnectionSubMaster_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                <Picker.Items>
+                                                    <x:String>นายหน้า</x:String>
+                                                    <x:String>คู่ค้า/เต็นท์</x:String>
+                                                    <x:String>บุคคลแนะนำ</x:String>
+                                                </Picker.Items>
+                                            </Picker>
+                                        </StackLayout>
+
+                                        <!--Contact_Master-->
+
+                                        <Frame x:Name="frmSubMasContact1" BackgroundColor="White" CornerRadius="5" WidthRequest="500" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                            <StackLayout  Spacing="20">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label TextColor="Black" Text="นายหน้า" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" >
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label TextColor="Black" Text="ชื่อ-สกุล" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionSubMaster1Name" TextChanged="sbConnectionSubMaster1Name_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionSubMaster1Name" ItemTapped="lstConnectionSubMaster1Name_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false"  />
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label TextColor="Black" Text="รหัสคู่ค้า" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionSubMaster1Code" TextChanged="sbConnectionSubMaster1Code_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionSubMaster1Code" IsVisible="false"  ItemTapped="lstConnectionSubMaster1Code_ItemTapped"  WidthRequest="100" HeightRequest="100"  />
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame x:Name="frmSubMasContact2" BackgroundColor="White" CornerRadius="5" WidthRequest="500" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                            <StackLayout Spacing="20">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label TextColor="Black" Text="คู่ค้า/เต็นท์" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label TextColor="Black" Text="ชื่อคู่ค้า" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionSubMaster2Name" TextChanged="sbConnectionSubMaster2Name_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionSubMaster2Name" ItemTapped="lstConnectionSubMaster2Name_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false"/>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                                        <Label TextColor="Black" Text="รหัสคู่ค้า" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                        <SearchBar x:Name="sbConnectionSubMaster2Code" TextChanged="sbConnectionSubMaster2Code_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Grid>
+                                                            <ListView x:Name="lstConnectionSubMaster2Code" ItemTapped="lstConnectionSubMaster2Code_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false"/>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame x:Name="frmSubMasContact3" BackgroundColor="White" CornerRadius="5" WidthRequest="500" HorizontalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                                            <StackLayout Spacing="20">
+                                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label TextColor="Black" Text="บุคคลแนะนำ"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label TextColor="Black" Text="ผู้แนะนำ"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    <Picker x:Name="pkSubMasAdvisorType" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" HorizontalOptions="EndAndExpand" WidthRequest="250" SelectedIndexChanged="pkSubMasAdvisorType_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                        <Picker.Items>
+                                                            <x:String>ลูกค้าเก่า</x:String>
+                                                            <x:String>ลูกค้าใหม่ติดต่อมาเอง</x:String>
+                                                            <x:String>พนักงาน</x:String>
+                                                        </Picker.Items>
+                                                    </Picker>
+                                                </StackLayout>
+                                                <StackLayout  x:Name="stSubMasAdvisorType1" IsVisible="false" Spacing="20">
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label TextColor="Black" x:Name="lbSubMasAdvisorType1" Text="ชื่อ-นามสกุล" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbSubMasAdvisorType1Name" TextChanged="sbSubMasAdvisorType1Name_TextChanged"  WidthRequest="250"  HorizontalTextAlignment="Start"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstSubMasAdvisorType1Name" ItemTapped="lstSubMasAdvisorType1Name_ItemTapped" WidthRequest="100" HeightRequest="100"  IsVisible="false" />
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label TextColor="Black" x:Name="lbSubMasAdvisorType1Appno"  Text="เลขที่สัญญา" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbSubMasAdvisorType1Appno" TextChanged="sbSubMasAdvisorType1Appno_TextChanged"  WidthRequest="250" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                                            <Grid>
+                                                                <ListView x:Name="lstSubMasAdvisorType1Appno" IsVisible="false"  ItemTapped="lstSubMasAdvisorType1Appno_ItemTapped"  WidthRequest="100" HeightRequest="100"  />
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout  x:Name="stSubMasAdvisorType2" IsVisible="false" Spacing="20">
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                                        <Label TextColor="Black" x:Name="lbSubMasAdvisorType2Name" Text="ชื่อ-นามสกุล" HorizontalOptions="StartAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Entry x:Name="enSubMasAdvisorType2Name" WidthRequest="250" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                                        <Label TextColor="Black" x:Name="lbSubMasAdvisorType2Social"  Text="ช่องทางลูกค้าติดต่อ" HorizontalOptions="StartAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        <Picker x:Name="pkSubSocialtype" Title="กรุณาเลือก" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="Start" WidthRequest="250" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                                            <Picker.Items>
+                                                                <x:String>Walk in</x:String>
+                                                                <x:String>Line</x:String>
+                                                                <x:String>โทรศัพท์</x:String>
+                                                                <x:String>Facebook</x:String>
+                                                            </Picker.Items>
+                                                        </Picker>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout  x:Name="stSubMasAdvisorType3" IsVisible="false" Spacing="20">
+                                                    <StackLayout Orientation="Horizontal"  >
+                                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label TextColor="Black" x:Name="lbSubMasAdvisorType3EmNo" Text="รหัสพนักงาน" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbSubMasAdvisorType3EmNo" TextChanged="sbSubMasAdvisorType3EmNo_TextChanged"  WidthRequest="250"  HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstSubMasAdvisorType3EmNo" ItemTapped="lstSubMasAdvisorType3EmNo_ItemTapped"  WidthRequest="100" HeightRequest="100" IsVisible="false"/>
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Label TextColor="Black" x:Name="lbSubMasAdvisorType3Name" Text="ชื่อ-นามสกุล" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                            <SearchBar x:Name="sbSubMasAdvisorType3Name" TextChanged="sbSubMasAdvisorType3Name_TextChanged"  WidthRequest="250"  HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                            <Grid>
+                                                                <ListView x:Name="lstSubMasAdvisorType3Name" IsVisible="false"  ItemTapped="lstSubMasAdvisorType3Name_ItemTapped"  WidthRequest="100" HeightRequest="100"  />
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="หมายเหตุ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkNote" Title="กรุณาเลือก" IsEnabled="False" VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" WidthRequest="250"  SelectedIndexChanged="pkNote_SelectedIndexChanged" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                        <Picker.Items>
+                                            <x:String>สภาพรถไม่ตรงกับหน้าเล่ม</x:String>
+                                            <x:String>ดำเนินการปรับปรุง,เปลี่ยน,ซ่อมแซม</x:String>
+                                            <x:String>รถสภาพปกติ</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                                <StackLayout x:Name="stRemarkdes" Orientation="Horizontal" IsVisible="false">
+                                    <Label  TextColor="Black" Text="อื่นๆ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry x:Name="enRemarkDes"  WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout x:Name="DatetimePicker" IsVisible="false">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="เสร็จสิ้นวันที่ :" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                        <DatePicker x:Name="startDatePicker"  Format="dd/MM/yyyy" VerticalOptions="CenterAndExpand"  WidthRequest="250"   FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                        <!--<DatePicker x:Name="startDatePicker"  Format="D" VerticalOptions="CenterAndExpand"  WidthRequest="250"   />-->
+
+
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="แคมเปญ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkCamPaign" IsEnabled="False" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="220"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding campaign_id}" ItemsSource="{Binding campaign_id}" ItemDisplayBinding="{Binding campaign}"  />
+                                    <ImageButton x:Name="ibtnClearCampaign" Clicked="ibtnClearCampaign_Clicked"  Source="xmark.png" BackgroundColor="Transparent" HeightRequest="10" WidthRequest="20" CornerRadius="4" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ตัวแม่-ตัวลูก" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkNumMasterandSubMaster" IsEnabled="False" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" >
+                                        <Picker.Items>
+                                            <x:String>ตัวแม่</x:String>
+                                            <x:String>ตัวลูก</x:String>
+                                            <x:String>ตัวแม่และตัวลูก</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                            </StackLayout>
+                            <!--</ScrollView>-->
+                        </Frame>
+
+
+                        <!--Page2-->
+
+                        <Frame x:Name="frmPage2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                            <!--<ScrollView>-->
+                            <StackLayout Padding="40" Spacing="20" WidthRequest="600">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label  Text="ข้อมูลตัวแม่" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="PlexSans" FontAttributes="Bold" FontSize="20"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label  Text="กรอกข้อมูลให้ตรงตามหน้ารายการจดทะเบียนเท่านั้น" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Red" FontFamily="PlexSans" FontAttributes="Bold" FontSize="12"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เลขทะเบียน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enMasLicno" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" TextChanged="enMasLicno_TextChanged" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="จังหวัด" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkMasProvince" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"   FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" 
+                                        SelectedItem="{Binding CODE}" ItemsSource="{Binding CODE}" ItemDisplayBinding="{Binding DESC_TH}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เลขตัวรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry   x:Name="enMasChasno" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" TextChanged="enMasChasno_TextChanged"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เลขเครื่องยนต์" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enMasEngno" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" TextChanged="enMasEngno_TextChanged"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ยี่ห้อรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkMasBrand" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding CODE}" ItemsSource="{Binding CODE}" ItemDisplayBinding="{Binding DESC_TH}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เชื้อเพลิง" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkMasFuel" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" >
+                                        <Picker.Items>
+                                            <x:String>ดีเซล</x:String>
+                                            <x:String>ก๊าซ CNG</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ประเภท" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkMasCarType" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding cde_typ_car}" ItemsSource="{Binding cde_typ_car}" ItemDisplayBinding="{Binding name_typ_car}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ลักษณะรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasCarStyle" Text="เลือกลักษณะรถ" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="220" HeightRequest="40" CornerRadius="10" TextColor="Black" BackgroundColor="#F1C40F" Clicked="btnMasCarStyle_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <ImageButton x:Name="ibtnHelpMasCarStyle" Clicked="ibtnHelpMasCarStyle_Clicked"  Source="exclamation.png" BackgroundColor="Transparent" HeightRequest="10" WidthRequest="20" CornerRadius="4" ></ImageButton>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Frame x:Name="frmMasCarStyle" BackgroundColor="LightGray" CornerRadius="5" IsVisible="false" WidthRequest="600">
+                                        <StackLayout  Spacing="20">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label TextColor="Black" Text="ลักษณะรถ" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label x:Name="lbMasStyle1" TextColor="Black" Text="กลุ่มรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Picker x:Name="pkMasStyle1" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  SelectedIndexChanged="pkMasStyle1_SelectedIndexChanged"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                                    SelectedItem="{Binding cde_grpcar}" ItemsSource="{Binding cde_grpcar}" ItemDisplayBinding="{Binding name_grpcar}" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label x:Name="lbMasStyle2" TextColor="Black" Text="ลักษณะกระบะ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Picker x:Name="pkMasStyle2" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  IsEnabled="False" SelectedIndexChanged="pkMasStyle2_SelectedIndexChanged"
+                                                    SelectedItem="{Binding cde_style_car}" ItemsSource="{Binding cde_style_car}" ItemDisplayBinding="{Binding name_style_car}"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout x:Name="stMasStyle3" Orientation="Horizontal" IsVisible="false">
+                                                <Label x:Name="lbMasStyle3" Text="ลักษณะพิเศษ" TextColor="Black"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Picker x:Name="pkMasStyle3" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"   FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                                    SelectedItem="{Binding cde_style_car}" ItemsSource="{Binding cde_style_car}" ItemDisplayBinding="{Binding name_style_car}" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ราคาขายตัวแม่" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enMasHeadPrice" WidthRequest="250"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start"  Keyboard="Numeric"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                        <Entry.Behaviors>
+                                            <vm:NumberMaskBehavior/>
+                                        </Entry.Behaviors>
+                                    </Entry>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="อุปกรณ์เสริม" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkMasAccessories" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" WidthRequest="250"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        SelectedItem="{Binding cde_accessory}" ItemsSource="{Binding cde_accessory}" ItemDisplayBinding="{Binding accessory}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ปีจดทะเบียน (พ.ศ.)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enMasYearCar" MaxLength="4" WidthRequest="250"  VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Start" Keyboard="Numeric"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                    <Label Text="แนบรูปภาพ" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18" TextColor="Black"/>
+                                </StackLayout>
+                                <StackLayout  Orientation="Vertical">
+                                    <Label  Text="กรุณาเลือกรูปภาพให้ตรงหมวดหมู่" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Red" FontFamily="PlexSans" FontAttributes="Bold" FontSize="12"/>
+                                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="ช่วยเหลือ" TextColor="Blue"   TextDecorations="Underline">
+                                                    <Span.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://drive.google.com/file/d/1cNyDWj21QdFoCt_Te5eNYxFBoQIw2VJI/view?usp=sharing" />
+                                                    </Span.GestureRecognizers>
+                                                </Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label TextColor="Black" Text="มุมหน้า-ด้านคนขับ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic1" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic1_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <!--<Image x:Name="img1"></Image>-->
+                                    <Label TextColor="Black" x:Name="imgMasPic1" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหน้า-ด้านโดยสาร" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic2" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic2_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic2" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหลัง-ด้านคนขับ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic3" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic3_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic3" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รูปยกดั๊มพ์" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic4" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic4_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic4" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="พื้นกระบะมุมข้างด้านใน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic5" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic5_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic5" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ภายในห้องโดยสาร(ถ่ายติดหัวเกียร์)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic6" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic6_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic6" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="หน้าปัดเลขไมล์" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic7" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic7_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic7" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="กระจังหน้า(ถ่ายติดทะเบียนรถ)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic8" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black"  Clicked="btnMasPic8_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic8" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ยกหัวเก๋ง(บริเวณใต้หัวเก๋ง)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic9" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic9_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic9" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="คอแซสซี(ฝั่งคนขับ)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic10" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic10_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic10" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="คอแซสซี(ฝั่งคนนั่ง)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic11" Text="Choose file"
+                                        VerticalOptions="CenterAndExpand"  HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40"  CornerRadius="10" BackgroundColor="#F1C40F"  TextColor="Black" Clicked="btnMasPic11_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic11" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เครื่องยนต์ฝั่งคนขับ(เห็นทั้งหมด)"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic12" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic12_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic12" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เครื่องยนต์ฝั่งคนนั่ง(เห็นทั้งหมด)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic13" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black"  Clicked="btnMasPic13_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic13" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รูปเลขตัวรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic14" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic14_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic14" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="แซสซี(ฝั่งคนขับ)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic15" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic15_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgMasPic15" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="แซสซี(ฝั่งคนนั่ง)" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic16" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic16_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic16" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รูปเกียร์" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic17" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic17_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic17" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เพลากลาง เพลาท้าย" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic18" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic18_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic18" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="DarkBlue" Text="เอกสารเล่มทะเบียน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รายการจดทะเบียน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic19" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic19_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic19" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="บันทึกเจ้าหน้าที่" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic20" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic20_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic20" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รายการเสียภาษี" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic21" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic21_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic21" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหลังฝั่งซ้าย" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnMasPic22" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic22_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" />
+                                    <Label TextColor="Black" x:Name="imgMasPic22" IsVisible="false"/>
+                                </StackLayout>
+                                <!--<StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหลัง-ด้านผู้โดยสาร" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Button x:Name="btnMasPic22" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="250" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnMasPic22_Clicked" />
+                                    <Label TextColor="Black" x:Name="imgMasPic22" IsVisible="false"/>
+                                </StackLayout>-->
+                            </StackLayout>
+                            <!--</ScrollView>-->
+                        </Frame>
+
+
+                        <Frame x:Name="frmPage3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="false" HasShadow="False">
+                            <!--<ScrollView>-->
+                            <StackLayout Padding="40" Spacing="20" WidthRequest="600">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label TextColor="Black" Text="ข้อมูลตัวลูก" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="20"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="กรอกข้อมูลให้ตรงตามหน้ารายการจดทะเบียนเท่านั้น" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Red" FontFamily="PlexSans" FontAttributes="Bold" FontSize="12"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ทะเบียน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enSubLicno" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" TextChanged="enSubLicno_TextChanged" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="จังหวัด" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Picker x:Name="pkSubProvince" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  SelectedItem="{Binding CODE}"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                        ItemsSource="{Binding CODE}" ItemDisplayBinding="{Binding DESC_TH}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="เลขตัวรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enSChasno" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16" TextChanged="enSChasno_TextChanged"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ลักษณะรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubCarStyle" Text="เลือกลักษณะรถ" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="220" HeightRequest="40" CornerRadius="10" TextColor="Black" BackgroundColor="#F1C40F" Clicked="btnSubCarStyle_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"></Button>
+                                    <ImageButton x:Name="ibtnHelpSubMasCarStyle" Clicked="ibtnHelpSubMasCarStyle_Clicked"  Source="exclamation.png" BackgroundColor="Transparent" HeightRequest="10" WidthRequest="20" CornerRadius="4" ></ImageButton>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Frame x:Name="frmSubCarStyle" BackgroundColor="LightGray" CornerRadius="5" IsVisible="false" HasShadow="False"  WidthRequest="600">
+                                        <StackLayout  Spacing="20">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label TextColor="Black" Text="ลักษณะรถ" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label TextColor="Black" Text="ประเภทรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Picker x:Name="pkSubStyle1" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                                        SelectedIndexChanged="pkSubStyle1_SelectedIndexChanged" SelectedItem="{Binding cde_type_style}" ItemsSource="{Binding cde_type_style}" ItemDisplayBinding="{Binding name_type_style}" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label TextColor="Black" Text="ลักษณะกระบะ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Picker x:Name="pkSubStyle2" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"  IsEnabled="False" SelectedIndexChanged="pkSubStyle2_SelectedIndexChanged"
+                                                        SelectedItem="{Binding cde_style_car}" ItemsSource="{Binding cde_style_car}" ItemDisplayBinding="{Binding name_style_car}"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout x:Name="stSubStyle3" Orientation="Horizontal" IsVisible="false">
+                                                <Label x:Name="lbSubStyle3" TextColor="Black" Text="ลักษณะพิเศษ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                                <Picker x:Name="pkSubStyle3" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="250"   
+                                                        SelectedItem="{Binding cde_style_car}" ItemsSource="{Binding cde_style_car}" ItemDisplayBinding="{Binding name_style_car}"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ประเภท" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Picker x:Name="pkSubCarType" Title="กรุณาเลือก" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" WidthRequest="220"   FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"
+                                            SelectedItem="{Binding cde_typ_car}" ItemsSource="{Binding cde_typ_car}" ItemDisplayBinding="{Binding name_typ_car}" />
+                                    <ImageButton x:Name="ibtnHelpSubMasCarType" Clicked="ibtnHelpSubMasCarType_Clicked"  Source="exclamation.png" BackgroundColor="Transparent" HeightRequest="10" WidthRequest="20" CornerRadius="4" ></ImageButton>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ราคาขายตัวลูก" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enSubCarPrice" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" Keyboard="Numeric" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                        <Entry.Behaviors>
+                                            <vm:NumberMaskBehavior/>
+                                        </Entry.Behaviors>
+                                    </Entry>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="ปีจดทะเบียน (พ.ศ.)"   HorizontalOptions="StartAndExpand"   VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Entry  x:Name="enSubYearCar" MaxLength="4" WidthRequest="250" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" Keyboard="Numeric" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label TextColor="Black" Text="แนบรูปภาพ" FontFamily="PlexSans" FontAttributes="Bold" FontSize="18"/>
+                                </StackLayout>
+                                <StackLayout  Orientation="Vertical">
+                                    <Label  Text="กรุณาเลือกรูปภาพให้ตรงหมวดหมู่" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  TextColor="Red" FontFamily="PlexSans" FontAttributes="Bold" FontSize="12"/>
+                                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="ช่วยเหลือ" TextColor="Blue"  FontSize="Micro" TextDecorations="Underline">
+                                                    <Span.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://drive.google.com/file/d/1nc0ZY-gaz_I7qRqr_H9cqsA_-Yhp6zjw/view?usp=sharing" />
+                                                    </Span.GestureRecognizers>
+                                                </Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label TextColor="Black" Text="มุมหน้า-ฝั่งขวา" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic1" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic1_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic1" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหน้า-ฝั่งซ้าย" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic2" Text="Choose file"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic2_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic2" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหลัง-ฝั่งขวา" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic3" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic3_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic3" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="มุมหลัง-ฝั่งซ้าย" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic4" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic4_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic4" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รูปยกดั๊มพ์" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic5" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200"  HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic5_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic5" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="พื้นกระบะและแผงข้างด้านใน"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic6" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic6_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic6" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รูปเลขตัวรถ" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic7" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40"  CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic7_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic7" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="DarkBlue" Text="เอกสารเล่มทะเบียน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รายการจดทะเบียน" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic8" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic8_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic8" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="บันทึกเจ้าหน้าที่" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic9" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic9_Clicked" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic9" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="รายการเสียภาษี" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic10" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic10_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic10" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="แซสซีฝั่งขวา" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic11" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic11_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic11" IsVisible="false"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="Black" Text="แซสซีฝั่งซ้าย" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Button x:Name="btnSubPic12" Text="Choose file" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="200" HeightRequest="40" CornerRadius="10" BackgroundColor="#F1C40F" TextColor="Black" Clicked="btnSubPic12_Clicked"  FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                                    <Label TextColor="Black" x:Name="imgSubPic12" IsVisible="false"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <!--</ScrollView>-->
+                        </Frame>
+                        <StackLayout Padding="30" Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="10,0,10,0">
+                            <!--<StackLayout HorizontalOptions="StartAndExpand" >-->
+                            <Button x:Name="btnMenu" Text="เมนูหลัก"  BackgroundColor="LightGray" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40" CornerRadius="10" Clicked="btnMenu_Clicked"  IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                            <Button x:Name="btnBack2" Text="กลับ"  BackgroundColor="#071131" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40" CornerRadius="10" Clicked="btnBack2_Clicked" IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                            <Button x:Name="btnBack3" Text="กลับ" TextColor="White" BackgroundColor="#071131" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40" CornerRadius="10" Clicked="btnBack3_Clicked" IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                            <Button x:Name="btnNext1" Text="ถัดไป" TextColor="White" BackgroundColor="#071131" VerticalOptions="CenterAndExpand" HeightRequest="40" CornerRadius="10" Clicked="btnNext1_Clicked" IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                            <Button x:Name="btnNext2" Text="ถัดไป" TextColor="White" BackgroundColor="#071131" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40" CornerRadius="10" Clicked="btnNext2_Clicked" IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                            <Button x:Name="btnSave" Text="บันทึก" TextColor="White" BackgroundColor="#071131" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40" CornerRadius="10" Clicked="btnSave_Clicked"  IsVisible="false" FontFamily="PlexSans" FontAttributes="Bold" FontSize="16"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </ScrollView>
+            </Frame>
+
+            <ContentView x:Name="PopupLoad" IsVisible="false">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Frame HeightRequest="200" WidthRequest="200" CornerRadius="20">
+                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <ActivityIndicator x:Name="Load" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" IsRunning="True" WidthRequest="30" HeightRequest="30"/>
+                            <Label Text="Loading" TextColor="Black" FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

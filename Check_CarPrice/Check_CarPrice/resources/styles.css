@@ -1,0 +1,30 @@
+﻿body {
+}
+
+^ContentPage {
+    /*background-color: white;*/
+    font-family: PlexSans;
+}
+
+^TabbedPage {
+    font-family: PlexSans;
+}
+
+/*entry{
+    color:white;
+    
+    
+}
+
+label {
+    color: darkblue;
+    font-size: large;
+    font-family: PlexSans;
+}
+
+.button-image {
+    color: black;
+    background: #F1C40F;
+    
+}
+*/

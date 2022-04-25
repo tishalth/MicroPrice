@@ -19,7 +19,7 @@ namespace Check_CarPrice.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CarPriceList_View : ContentPage
     {
-        
+
         private User _userlogin;
         public DataTransactionCar _dta;
 
@@ -39,17 +39,7 @@ namespace Check_CarPrice.View
         {
             CarPriceList_WebService iapi = new CarPriceList_WebService();
             lblData.Text = "รายการรถ";
-            //var data = GETTRANSACTION_lIST();
-
-            //if (data != null)
-            //{
-                pkFilter.SelectedIndex = 0;
-            //}
-            //else
-            //{
-            //    lstData.ItemsSource = data;
-            //}
-
+            pkFilter.SelectedIndex = 0;
         }
 
         private void RoleUser()
@@ -112,7 +102,7 @@ namespace Check_CarPrice.View
                     var datascreen = data.Where(a => a.branch_code == _userlogin.data.Select(b => b.branch_no).FirstOrDefault()).ToList();
                     if (datascreen != null)
                     {
-                        if (filter == "") lstData.ItemsSource = datascreen.Where(a => a.status == 1).ToList().OrderByDescending(a=>a.create_date);
+                        if (filter == "") lstData.ItemsSource = datascreen.Where(a => a.status == 1).ToList().OrderByDescending(a => a.create_date);
                         else lstData.ItemsSource = datascreen.Where(a => a.status == 1 && a.status_approve == filter).ToList().OrderByDescending(a => a.create_date);
                     }
                     else

@@ -45,7 +45,8 @@ namespace Check_CarPrice.View
         public Login_View()
         {
             InitializeComponent();
-           
+            txtusername.Text = Preferences.Get("Username", String.Empty);
+            txtpassword.Text = Preferences.Get("Password", String.Empty);
         }
 
         public async Task CheckVersion(User user)
@@ -448,6 +449,10 @@ namespace Check_CarPrice.View
 
         private async void btnlogin_Clicked(object sender, EventArgs e)
         {
+            Preferences.Set("Username", txtusername.Text);
+            Preferences.Set("Password", txtpassword.Text);
+
+
             Appz_WebService lWeb = new Appz_WebService();
             PopupLoad.IsVisible = true;
             PageLogin.Opacity = 0.5;

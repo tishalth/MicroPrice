@@ -21,9 +21,9 @@ namespace Check_CarPrice.WebService
             //UT
             //client = new RestClient("https://devapi.microleasingplc.com/" + dta);
             //UAT
-            //client = new RestClient("https://api-uat.microleasingplc.com/" + dta);
+            client = new RestClient("https://api-uat.microleasingplc.com/" + dta);
             //Production
-            client = new RestClient("https://apip01.microleasingplc.com/" + dta);
+            //client = new RestClient("https://apip01.microleasingplc.com/" + dta);
             return client;
         }
 

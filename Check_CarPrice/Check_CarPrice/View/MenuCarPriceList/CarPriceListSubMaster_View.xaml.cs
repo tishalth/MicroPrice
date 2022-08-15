@@ -59,7 +59,11 @@ namespace Check_CarPrice.View.MenuCarPriceList
         {
             NumberMaskBehavior iModel = new NumberMaskBehavior();
             Appz_WebService iAPI = new Appz_WebService();
-            var alldata = GETCARDETAILALL_lIST();
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_CARDETAILALL_GET";
+            mMo.c1 = _dtatran.app_id;
+            var alldata = GETCARDETAILALL_lIST(mMo);
             if (alldata != null)
             {
                 
@@ -105,10 +109,10 @@ namespace Check_CarPrice.View.MenuCarPriceList
             Navigation.PushAsync(new MenuCarPriceList_View(_userlogin, _dtatran));
         }
 
-        public List<DataCarDetail> GETCARDETAILALL_lIST()
+        public List<DataCarDetail> GETCARDETAILALL_lIST(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GETCARDETAIL());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 

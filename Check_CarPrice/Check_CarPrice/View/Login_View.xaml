@@ -44,8 +44,8 @@
             </StackLayout>
         </StackLayout>
         <StackLayout Margin="0,0,0,30" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
-            <Label Text="V 0 . 5 0" Margin="0,0,0,20" TextColor="White"  FontSize="Small" FontFamily="PlexSans"/>
-            <!--<Label Text="V 1 . 1 8" Margin="0,0,0,20" TextColor="White"  FontSize="Small" FontFamily="PlexSans"/>-->
+            <!--<Label Text="V 0 . 5 2" Margin="0,0,0,20" TextColor="White"  FontSize="Small" FontFamily="PlexSans"/>-->
+            <Label Text="V 1 . 2 0" Margin="0,0,0,20" TextColor="White"  FontSize="Small" FontFamily="PlexSans"/>
         </StackLayout>
 
 

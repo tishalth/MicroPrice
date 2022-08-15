@@ -67,3 +67,4 @@ C:\Mind\Project\MicroPrice\Check_CarPrice\Check_CarPrice\obj\Release\netstandard
 C:\Mind\Project\MicroPrice\Check_CarPrice\Check_CarPrice\obj\Release\netstandard2.0\Check_CarPrice.dll
 C:\Mind\Project\MicroPrice\Check_CarPrice\Check_CarPrice\obj\Release\netstandard2.0\ref\Check_CarPrice.dll
 C:\Mind\Project\MicroPrice\Check_CarPrice\Check_CarPrice\obj\Release\netstandard2.0\Check_CarPrice.pdb
+C:\Mind\Project\MicroPrice\Check_CarPrice\Check_CarPrice\obj\Release\netstandard2.0\Check_CarPrice.csproj.AssemblyReference.cache

@@ -3,7 +3,7 @@
 	.section	.rodata.env.str.1,"aMS",@progbits,1
 	.type	.L.env.str.1, @object
 .L.env.str.1:
-	.asciz	"com.companyname.check_carprice_PRD"
+	.asciz	"com.companyname.check_carprice_UAT"
 	.size	.L.env.str.1, 35
 	.section	.data.application_config,"aw",@progbits
 	.type	application_config, @object
@@ -79,7 +79,7 @@ mono_aot_mode_name:
 	.section	.rodata.env.str.8,"aMS",@progbits,1
 	.type	.L.env.str.8, @object
 .L.env.str.8:
-	.asciz	"76f3be4d-623b-4941-87d9-9405623d3872"
+	.asciz	"0fd85dae-390a-4cd7-b97d-acbbff3283a9"
 	.size	.L.env.str.8, 37
 	.section	.rodata.env.str.9,"aMS",@progbits,1
 	.type	.L.env.str.9, @object

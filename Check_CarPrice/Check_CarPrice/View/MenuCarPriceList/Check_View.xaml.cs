@@ -50,7 +50,11 @@ namespace Check_CarPrice.View.MenuCarPriceList
             Appz_WebService iAPI = new Appz_WebService();
             datatran = dta;
             _userlogin = user;
-            _dta = GETCARDETAILALL_lIST().FirstOrDefault();
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_CARDETAILALL_GET";
+            mMo.c1 = datatran.app_id;
+            _dta = GETCARDETAILALL_lIST(mMo).FirstOrDefault();
             //var data = iAPI.GetDataCarDetail();
             //if (data != null)
             //{
@@ -113,9 +117,22 @@ namespace Check_CarPrice.View.MenuCarPriceList
         {
             Check_WebService iAPI = new Check_WebService();
             Appz_WebService aAPI = new Appz_WebService();
-         
+
             //var data = iAPI.PostDataTransactionCar(_dta.app_id).FirstOrDefault();
-            var data = GETCARDETAILALL_lIST().FirstOrDefault();
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_CARDETAILALL_GET";
+            mMo.c1 = datatran.app_id;
+            var data = GETCARDETAILALL_lIST(mMo).FirstOrDefault();
+
+            SentToAPI mMo_1 = new SentToAPI();
+            mMo_1.personnel_code = _userlogin.data.First().personnel_code;
+            mMo_1.storename = "ST_CARDETAILALL_GET";
+            mMo_1.c1 = _dta.app_id;
+            mMo_1.c2 = _dta.applno_car;
+            var datatwo = GETCARDETAILALL_lIST(mMo_1);
+
+
             lbCreateby.Text = data.personnel_code==""|| data.personnel_code==null?"-":data.personnel_code;
             lbEmName.Text = data.personnel_name == "" || data.personnel_name == null ? "-" : data.personnel_name;
             lbApplno.Text = data.applno_car == "" || data.applno_car == null ? "-" : data.applno_car;
@@ -233,9 +250,11 @@ namespace Check_CarPrice.View.MenuCarPriceList
                         }
                     }
 
-                    var dataD2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
-                    if (dataD2 != null)
+                    //var dataD2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
+                    if (datatwo != null)
                     {
+                        var dataD2 = datatwo.FirstOrDefault();
+
                         Dealer2.IsVisible = true;
                         lbTypeContactD2.Text = dataD2.type_contact == "1" ? "นายหน้า" : dataD2.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
                         if (dataD2.type_contact == "1")
@@ -300,189 +319,199 @@ namespace Check_CarPrice.View.MenuCarPriceList
             }
             else if (_dta.type_grp_car == "02")      //ตัวลูก
             {
-                var dataD2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
-
-                if (_dta.type_dealer == "1")         //ดีลดลอร์เดียวกัน
+                //SentToAPI mMo_1 = new SentToAPI();
+                //mMo_1.personnel_code = _userlogin.data.First().personnel_code;
+                //mMo_1.storename = "ST_INFORMATION_TRANSACTION_CAR_GET";
+                //mMo_1.c1 = _dta.applno_car;
+                //mMo_1.c2 = _dta.app_id;
+                //var dataD2 = GetDataInformationTransactionCar(mMo).FirstOrDefault();
+                //var dataD2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
+                if (datatwo != null)
                 {
-                    Dealer2.IsVisible = false;
-                    lbTypeContact.Text = dataD2.type_contact == "1" ? "นายหน้า" : dataD2.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
-                    if (dataD2.type_contact == "1")
+                    var dataD2 = datatwo.FirstOrDefault();
+                    if (_dta.type_dealer == "1")         //ดีลดลอร์เดียวกัน
                     {
-                        con1.IsVisible = true;
-                        con2.IsVisible = false;
-                        con3.IsVisible = false;
-
-                        lbNameDealerAgent1.Text = dataD2.name_dealer_agent;
-                        lbCodeDealerAgent1.Text = dataD2.cde_dealer_agent;
-                    }
-                    else if (dataD2.type_contact == "2")
-                    {
-                        con1.IsVisible = false;
-                        con2.IsVisible = true;
-                        con3.IsVisible = false;
-
-                        lbNameDealerAgent2.Text = dataD2.name_dealer_agent;
-                        lbCodeDealerAgent2.Text = dataD2.cde_dealer_agent;
-
-                    }
-                    else if (dataD2.type_contact == "3")
-                    {
-                        con1.IsVisible = false;
-                        con2.IsVisible = false;
-                        con3.IsVisible = true;
-                        lbTypePerson.Text = dataD2.typ_person == "1" ? "ลูกค้าเก่า" : dataD2.typ_person == "2" ? "ลูกค้าใหม่ติดต่อมาเอง" : "พนักงาน";
+                        Dealer2.IsVisible = false;
+                        lbTypeContact.Text = dataD2.type_contact == "1" ? "นายหน้า" : dataD2.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
+                        if (dataD2.type_contact == "1")
                         {
-                            if (dataD2.typ_person == "1")
+                            con1.IsVisible = true;
+                            con2.IsVisible = false;
+                            con3.IsVisible = false;
+
+                            lbNameDealerAgent1.Text = dataD2.name_dealer_agent;
+                            lbCodeDealerAgent1.Text = dataD2.cde_dealer_agent;
+                        }
+                        else if (dataD2.type_contact == "2")
+                        {
+                            con1.IsVisible = false;
+                            con2.IsVisible = true;
+                            con3.IsVisible = false;
+
+                            lbNameDealerAgent2.Text = dataD2.name_dealer_agent;
+                            lbCodeDealerAgent2.Text = dataD2.cde_dealer_agent;
+
+                        }
+                        else if (dataD2.type_contact == "3")
+                        {
+                            con1.IsVisible = false;
+                            con2.IsVisible = false;
+                            con3.IsVisible = true;
+                            lbTypePerson.Text = dataD2.typ_person == "1" ? "ลูกค้าเก่า" : dataD2.typ_person == "2" ? "ลูกค้าใหม่ติดต่อมาเอง" : "พนักงาน";
                             {
+                                if (dataD2.typ_person == "1")
+                                {
 
-                                lbLeft1.Text = "ชื่อ-นามสกุล";
-                                lbRight1.Text = dataD2.name_contno;
-                                lbLeft2.Text = "เลขที่สัญญา";
-                                lbRight2.Text = dataD2.contno;
+                                    lbLeft1.Text = "ชื่อ-นามสกุล";
+                                    lbRight1.Text = dataD2.name_contno;
+                                    lbLeft2.Text = "เลขที่สัญญา";
+                                    lbRight2.Text = dataD2.contno;
 
-                            }
-                            else if (dataD2.typ_person == "2")
-                            {
+                                }
+                                else if (dataD2.typ_person == "2")
+                                {
 
-                                lbLeft1.Text = "ชื่อ-นามสกุล";
-                                lbRight1.Text = dataD2.name_cus;
-                                lbLeft2.Text = "ช่องทางลูกค้าติดต่อ";
-                                lbRight2.Text = dataD2.type_cont_channel == "1" ? "Walk in" : dataD2.type_cont_channel == "2" ? "Line" : dataD2.type_cont_channel == "3" ? "โทรศัพท์" : "Facebook";
+                                    lbLeft1.Text = "ชื่อ-นามสกุล";
+                                    lbRight1.Text = dataD2.name_cus;
+                                    lbLeft2.Text = "ช่องทางลูกค้าติดต่อ";
+                                    lbRight2.Text = dataD2.type_cont_channel == "1" ? "Walk in" : dataD2.type_cont_channel == "2" ? "Line" : dataD2.type_cont_channel == "3" ? "โทรศัพท์" : "Facebook";
 
 
-                            }
-                            else if (dataD2.typ_person == "3")
-                            {
+                                }
+                                else if (dataD2.typ_person == "3")
+                                {
 
-                                lbLeft1.Text = "รหัสพนักงาน";
-                                lbRight1.Text = dataD2.perosonal_cde;
-                                lbLeft2.Text = "ชื่อ-นามสกุล";
-                                lbRight2.Text = dataD2.personal_name;
+                                    lbLeft1.Text = "รหัสพนักงาน";
+                                    lbRight1.Text = dataD2.perosonal_cde;
+                                    lbLeft2.Text = "ชื่อ-นามสกุล";
+                                    lbRight2.Text = dataD2.personal_name;
 
+                                }
                             }
                         }
+                    }
+                    else if (_dta.type_dealer == "2")         //คนละดีลลเลอร์
+                    {
+                        Dealer2.IsVisible = true;
+                        lbTypeContact.Text = dataD2.type_contact == "1" ? "นายหน้า" : dataD2.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
+                        if (dataD2.type_contact == "1")
+                        {
+                            con1.IsVisible = true;
+                            con2.IsVisible = false;
+                            con3.IsVisible = false;
+
+                            lbNameDealerAgent1.Text = dataD2.name_dealer_agent;
+                            lbCodeDealerAgent1.Text = dataD2.cde_dealer_agent;
+                        }
+                        else if (dataD2.type_contact == "2")
+                        {
+                            con1.IsVisible = false;
+                            con2.IsVisible = true;
+                            con3.IsVisible = false;
+
+                            lbNameDealerAgent2.Text = dataD2.name_dealer_agent;
+                            lbCodeDealerAgent2.Text = dataD2.cde_dealer_agent;
+
+                        }
+                        else if (dataD2.type_contact == "3")
+                        {
+                            con1.IsVisible = false;
+                            con2.IsVisible = false;
+                            con3.IsVisible = true;
+                            lbTypePerson.Text = dataD2.typ_person == "1" ? "ลูกค้าเก่า" : dataD2.typ_person == "2" ? "ลูกค้าใหม่ติดต่อมาเอง" : "พนักงาน";
+                            {
+                                if (dataD2.typ_person == "1")
+                                {
+
+                                    lbLeft1.Text = "ชื่อ-นามสกุล";
+                                    lbRight1.Text = dataD2.name_contno;
+                                    lbLeft2.Text = "เลขที่สัญญา";
+                                    lbRight2.Text = dataD2.contno;
+
+                                }
+                                else if (dataD2.typ_person == "2")
+                                {
+
+                                    lbLeft1.Text = "ชื่อ-นามสกุล";
+                                    lbRight1.Text = dataD2.name_cus;
+                                    lbLeft2.Text = "ช่องทางลูกค้าติดต่อ";
+                                    lbRight2.Text = dataD2.type_cont_channel == "1" ? "Walk in" : dataD2.type_cont_channel == "2" ? "Line" : dataD2.type_cont_channel == "3" ? "โทรศัพท์" : "Facebook";
+
+
+                                }
+                                else if (dataD2.typ_person == "3")
+                                {
+
+                                    lbLeft1.Text = "รหัสพนักงาน";
+                                    lbRight1.Text = dataD2.perosonal_cde;
+                                    lbLeft2.Text = "ชื่อ-นามสกุล";
+                                    lbRight2.Text = dataD2.personal_name;
+
+                                }
+                            }
+                        }
+
+                        lbTypeContactD2.Text = _dta.type_contact == "1" ? "นายหน้า" : _dta.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
+                        if (_dta.type_contact == "1")
+                        {
+                            con1D2.IsVisible = true;
+                            con2D2.IsVisible = false;
+                            con3D2.IsVisible = false;
+
+                            lbNameDealerAgent1D2.Text = _dta.name_dealer_agent;
+                            lbCodeDealerAgent1D2.Text = _dta.cde_dealer_agent;
+                        }
+                        else if (_dta.type_contact == "2")
+                        {
+                            con1D2.IsVisible = false;
+                            con2D2.IsVisible = true;
+                            con3D2.IsVisible = false;
+
+                            lbNameDealerAgent2D2.Text = _dta.name_dealer_agent;
+                            lbCodeDealerAgent2D2.Text = _dta.cde_dealer_agent;
+
+                        }
+                        else if (_dta.type_contact == "3")
+                        {
+                            con1D2.IsVisible = false;
+                            con2D2.IsVisible = false;
+                            con3D2.IsVisible = true;
+                            lbTypePersonD2.Text = _dta.typ_person == "1" ? "ลูกค้าเก่า" : _dta.typ_person == "2" ? "ลูกค้าใหม่ติดต่อมาเอง" : "พนักงาน";
+                            {
+                                if (_dta.typ_person == "1")
+                                {
+
+                                    lbLeft1D2.Text = "ชื่อ-นามสกุล";
+                                    lbRight1D2.Text = _dta.name_contno;
+                                    lbLeft2D2.Text = "เลขที่สัญญา";
+                                    lbRight2D2.Text = _dta.contno;
+
+                                }
+                                else if (_dta.typ_person == "2")
+                                {
+
+                                    lbLeft1D2.Text = "ชื่อ-นามสกุล";
+                                    lbRight1D2.Text = _dta.name_cus;
+                                    lbLeft2D2.Text = "ช่องทางลูกค้าติดต่อ";
+                                    lbRight2D2.Text = _dta.type_cont_channel == "1" ? "Walk in" : _dta.type_cont_channel == "2" ? "Line" : _dta.type_cont_channel == "3" ? "โทรศัพท์" : "Facebook";
+
+
+                                }
+                                else if (_dta.typ_person == "3")
+                                {
+
+                                    lbLeft1D2.Text = "รหัสพนักงาน";
+                                    lbRight1D2.Text = _dta.perosonal_cde;
+                                    lbLeft2D2.Text = "ชื่อ-นามสกุล";
+                                    lbRight2D2.Text = _dta.personal_name;
+
+                                }
+                            }
+                        }
+
                     }
                 }
-                else if (_dta.type_dealer == "2")         //คนละดีลลเลอร์
-                {
-                    Dealer2.IsVisible = true;
-                    lbTypeContact.Text = dataD2.type_contact == "1" ? "นายหน้า" : dataD2.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
-                    if (dataD2.type_contact == "1")
-                    {
-                        con1.IsVisible = true;
-                        con2.IsVisible = false;
-                        con3.IsVisible = false;
-
-                        lbNameDealerAgent1.Text = dataD2.name_dealer_agent;
-                        lbCodeDealerAgent1.Text = dataD2.cde_dealer_agent;
-                    }
-                    else if (dataD2.type_contact == "2")
-                    {
-                        con1.IsVisible = false;
-                        con2.IsVisible = true;
-                        con3.IsVisible = false;
-
-                        lbNameDealerAgent2.Text = dataD2.name_dealer_agent;
-                        lbCodeDealerAgent2.Text = dataD2.cde_dealer_agent;
-
-                    }
-                    else if (dataD2.type_contact == "3")
-                    {
-                        con1.IsVisible = false;
-                        con2.IsVisible = false;
-                        con3.IsVisible = true;
-                        lbTypePerson.Text = dataD2.typ_person == "1" ? "ลูกค้าเก่า" : dataD2.typ_person == "2" ? "ลูกค้าใหม่ติดต่อมาเอง" : "พนักงาน";
-                        {
-                            if (dataD2.typ_person == "1")
-                            {
-
-                                lbLeft1.Text = "ชื่อ-นามสกุล";
-                                lbRight1.Text = dataD2.name_contno;
-                                lbLeft2.Text = "เลขที่สัญญา";
-                                lbRight2.Text = dataD2.contno;
-
-                            }
-                            else if (dataD2.typ_person == "2")
-                            {
-
-                                lbLeft1.Text = "ชื่อ-นามสกุล";
-                                lbRight1.Text = dataD2.name_cus;
-                                lbLeft2.Text = "ช่องทางลูกค้าติดต่อ";
-                                lbRight2.Text = dataD2.type_cont_channel == "1" ? "Walk in" : dataD2.type_cont_channel == "2" ? "Line" : dataD2.type_cont_channel == "3" ? "โทรศัพท์" : "Facebook";
-
-
-                            }
-                            else if (dataD2.typ_person == "3")
-                            {
-
-                                lbLeft1.Text = "รหัสพนักงาน";
-                                lbRight1.Text = dataD2.perosonal_cde;
-                                lbLeft2.Text = "ชื่อ-นามสกุล";
-                                lbRight2.Text = dataD2.personal_name;
-
-                            }
-                        }
-                    }
-
-                    lbTypeContactD2.Text = _dta.type_contact == "1" ? "นายหน้า" : _dta.type_contact == "2" ? "คู่ค้าเต็นท์" : "บุคคลแนะนำ";
-                    if (_dta.type_contact == "1")
-                    {
-                        con1D2.IsVisible = true;
-                        con2D2.IsVisible = false;
-                        con3D2.IsVisible = false;
-
-                        lbNameDealerAgent1D2.Text = _dta.name_dealer_agent;
-                        lbCodeDealerAgent1D2.Text = _dta.cde_dealer_agent;
-                    }
-                    else if (_dta.type_contact == "2")
-                    {
-                        con1D2.IsVisible = false;
-                        con2D2.IsVisible = true;
-                        con3D2.IsVisible = false;
-
-                        lbNameDealerAgent2D2.Text = _dta.name_dealer_agent;
-                        lbCodeDealerAgent2D2.Text = _dta.cde_dealer_agent;
-
-                    }
-                    else if (_dta.type_contact == "3")
-                    {
-                        con1D2.IsVisible = false;
-                        con2D2.IsVisible = false;
-                        con3D2.IsVisible = true;
-                        lbTypePersonD2.Text = _dta.typ_person == "1" ? "ลูกค้าเก่า" : _dta.typ_person == "2" ? "ลูกค้าใหม่ติดต่อมาเอง" : "พนักงาน";
-                        {
-                            if (_dta.typ_person == "1")
-                            {
-
-                                lbLeft1D2.Text = "ชื่อ-นามสกุล";
-                                lbRight1D2.Text = _dta.name_contno;
-                                lbLeft2D2.Text = "เลขที่สัญญา";
-                                lbRight2D2.Text = _dta.contno;
-
-                            }
-                            else if (_dta.typ_person == "2")
-                            {
-
-                                lbLeft1D2.Text = "ชื่อ-นามสกุล";
-                                lbRight1D2.Text = _dta.name_cus;
-                                lbLeft2D2.Text = "ช่องทางลูกค้าติดต่อ";
-                                lbRight2D2.Text = _dta.type_cont_channel == "1" ? "Walk in" : _dta.type_cont_channel == "2" ? "Line" : _dta.type_cont_channel == "3" ? "โทรศัพท์" : "Facebook";
-
-
-                            }
-                            else if (_dta.typ_person == "3")
-                            {
-
-                                lbLeft1D2.Text = "รหัสพนักงาน";
-                                lbRight1D2.Text = _dta.perosonal_cde;
-                                lbLeft2D2.Text = "ชื่อ-นามสกุล";
-                                lbRight2D2.Text = _dta.personal_name;
-
-                            }
-                        }
-                    }
-
-                }
+                
             }
 
             lbRemark.Text = data.remark_transactioncar == "1" ? "สภาพรถไม่ตรงกับหน้าเล่ม" : data.remark_transactioncar == "2" ? "ดำเนินการปรับปรุง,เปลี่ยน,ซ่อมแซม" : "รถสภาพปกติ";
@@ -598,10 +627,17 @@ namespace Check_CarPrice.View.MenuCarPriceList
 
         private DataInformationCodeCar GetDataChecker()
         {
-          
+
             DataInformationCodeCar data = new DataInformationCodeCar();
             Check_WebService iAPI = new Check_WebService();
-            var datainfor = iAPI.GetDataInformationCar().Where(a => a.app_id == _dta.app_id && a.status == 1).FirstOrDefault();
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_INFORMATION_CAR_GET";
+            mMo.c1 = _dta.app_id;
+            mMo.c2 = _dta.applno_car;
+            var datainfor = GetDataInformationCar(mMo).FirstOrDefault();
+
+            //var datainfor = iAPI.GetDataInformationCar().Where(a => a.app_id == _dta.app_id && a.status == 1).FirstOrDefault();
 
             data.app_id = _dta.app_id;
             data.status_appcar = ((DataStatus)pkMStatus.SelectedItem).cde_status_appcar;
@@ -780,10 +816,10 @@ namespace Check_CarPrice.View.MenuCarPriceList
         }
 
 
-        public List<DataCarDetail> GETCARDETAILALL_lIST()
+        public List<DataCarDetail> GETCARDETAILALL_lIST(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GETCARDETAIL());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 
@@ -830,5 +866,71 @@ namespace Check_CarPrice.View.MenuCarPriceList
             mMo.c30 = "";
             return mMo;
         }
+
+        public List<DataInformationTransactionCar> GetDataInformationTransactionCar(SentToAPI mMo)
+        {
+            Appz_WebService iAPI = new Appz_WebService();
+            var response = iAPI.Sent(mMo);
+            if (response != null)
+            {
+
+                var posts = JsonConvert.DeserializeObject<List<DataInformationTransactionCar>>(response.Content);
+                return posts;
+            }
+            else return null;
+        }
+
+        public List<DataInformationCar> GetDataInformationCar(SentToAPI mMo)
+        {
+            Appz_WebService iAPI = new Appz_WebService();
+            var response = iAPI.Sent(mMo);
+            if (response != null)
+            {
+
+                var posts = JsonConvert.DeserializeObject<List<DataInformationCar>>(response.Content);
+                return posts;
+            }
+            else return null;
+        }
+
+
+
+        //public SentToAPI Getdata(string applno_car, string app_id)
+        //{
+        //    SentToAPI mMo = new SentToAPI();
+        //    mMo.personnel_code = _userlogin.data.First().personnel_code;
+        //    mMo.storename = "ST_INFORMATION_TRANSACTION_CAR_GET";
+        //    mMo.c1 = applno_car;
+        //    mMo.c2 = app_id;
+        //    mMo.c3 = "";
+        //    mMo.c4 = "";
+        //    mMo.c5 = "";
+        //    mMo.c6 = "";
+        //    mMo.c7 = "";
+        //    mMo.c8 = "";
+        //    mMo.c9 = "";
+        //    mMo.c10 = "";
+        //    mMo.c11 = "";
+        //    mMo.c12 = "";
+        //    mMo.c13 = "";
+        //    mMo.c14 = "";
+        //    mMo.c15 = "";
+        //    mMo.c16 = "";
+        //    mMo.c17 = "";
+        //    mMo.c18 = "";
+        //    mMo.c19 = "";
+        //    mMo.c20 = "";
+        //    mMo.c21 = "";
+        //    mMo.c22 = "";
+        //    mMo.c23 = "";
+        //    mMo.c24 = "";
+        //    mMo.c25 = "";
+        //    mMo.c26 = "";
+        //    mMo.c27 = "";
+        //    mMo.c28 = "";
+        //    mMo.c29 = "";
+        //    mMo.c30 = "";
+        //    return mMo;
+        //}
     }
 }

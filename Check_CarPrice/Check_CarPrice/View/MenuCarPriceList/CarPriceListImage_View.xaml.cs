@@ -42,7 +42,12 @@ namespace Check_CarPrice.View.MenuCarPriceList
             CarPriceListImage_WebService iAPI = new CarPriceListImage_WebService();
             lbLicno.Text = _dta.licno;
             lbTitle.Text = _dta.type_grp_car == "01" ? "รูปภาพตัวแม่" : "รูปภาพตัวลูก";
-            var ddta = GETCARDETAIL_lIST();
+
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_CARDETAIL_GET";
+            mMo.c1 = _dta.app_id;
+            var ddta = GETCARDETAIL_lIST(mMo);
             if(ddta.Count()!=0)
             //if (iAPI.GetImage() != null)
             {
@@ -145,10 +150,10 @@ namespace Check_CarPrice.View.MenuCarPriceList
 
         }
 
-        public List<DataImage> GETCARDETAIL_lIST()
+        public List<DataImage> GETCARDETAIL_lIST(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GETCARDETAIL());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 

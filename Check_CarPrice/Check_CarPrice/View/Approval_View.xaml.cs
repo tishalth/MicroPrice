@@ -31,8 +31,11 @@ namespace Check_CarPrice.View
         public Approval_View(User user,SelectedItemChangedEventArgs dta)
         {
             _userlogin = user;
-            Appz_WebService iAPI = new Appz_WebService();
-            var getdata = GETCARDETAILALL_lIST(((DataApproveList)dta.SelectedItem).app_id);
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_CARDETAILALL_GET";
+            mMo.c1 = ((DataApproveList)dta.SelectedItem).app_id;
+            var getdata = GETCARDETAILALL_lIST(mMo);
             if (getdata != null)
             {
                 _dta = getdata.FirstOrDefault();
@@ -113,7 +116,7 @@ namespace Check_CarPrice.View
             if (_userlogin.role.func.Where(a=> a.func_id=="F0005" || a.func_id== "F0006").ToList().Count() != 0)
             {
                 PageAppproval.IsVisible = true; 
-                Appz_WebService iAPI = new Appz_WebService();
+                //Appz_WebService iAPI = new Appz_WebService();
 
                 var dta = _dta;
                 lbHeadPrice.Text = dta.head_price==""|| dta.head_price ==null?"-": iModel.FormatData(dta.head_price) + " บาท";
@@ -210,10 +213,10 @@ namespace Check_CarPrice.View
             Navigation.PushAsync(new MainPage(_userlogin));
         }
 
-        public List<DataCarDetail> GETCARDETAILALL_lIST(string appid)
+        public List<DataCarDetail> GETCARDETAILALL_lIST(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GETCARDETAIL(appid));
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 

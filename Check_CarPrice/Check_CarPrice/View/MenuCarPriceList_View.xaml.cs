@@ -179,7 +179,7 @@ namespace Check_CarPrice.View
         {
             PopupLoad.IsVisible = true;
             PageMenu.Opacity = 0.5;
-            await Task.Delay(2000);
+            await Task.Delay(100);
             await Navigation.PushAsync(new MainPage(_userlogin));
             PopupLoad.IsVisible = false;
         }

@@ -35,7 +35,7 @@
 
 	/* 3: Check_CarPrice.dll */
 	/* uncompressed_file_size */
-	.word	1380352
+	.word	1377792
 	/* loaded */
 	.byte	0
 	/* data */

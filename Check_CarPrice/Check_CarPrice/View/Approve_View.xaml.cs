@@ -42,7 +42,14 @@ namespace Check_CarPrice.View
             //Appz_WebService iapi = new Appz_WebService();
             //if (_userlogin.role.func.Where(a => a.func_id== "F0005"|| a.func_id == "F0006").Count() != 0)    //F0005 = access_verify   , F0006 = AccessApprove
             //{
-            var dtas = GetDataApproveList();
+            var func = _userlogin.role.func.Where(a => a.func_id == "F0005" || a.func_id == "F0006").Select(a => a.func_id).FirstOrDefault();
+
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_APPROVELIST";
+            mMo.c1 = func;
+            //mMo.c1 = _userlogin.role.func.First().role_id;
+            var dtas = GetDataApproveList(mMo);
             if (dtas != null)
             {
                 lstData.ItemsSource = dtas;
@@ -74,10 +81,10 @@ namespace Check_CarPrice.View
         }
 
 
-        public List<DataApproveList> GetDataApproveList()
+        public List<DataApproveList> GetDataApproveList(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(ApproveList());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 
@@ -87,42 +94,42 @@ namespace Check_CarPrice.View
             else return null;
         }
 
-        public SentToAPI ApproveList()
-        {
-            SentToAPI mMo = new SentToAPI();
-            mMo.personnel_code = _userlogin.data.First().personnel_code;
-            mMo.storename = "APPROVELIST";
-            mMo.c1 = _userlogin.role.func.First().role_id;
-            mMo.c2 = "";
-            mMo.c3 = "";
-            mMo.c4 = "";
-            mMo.c5 = "";
-            mMo.c6 = "";
-            mMo.c7 = "";
-            mMo.c8 = "";
-            mMo.c9 = "";
-            mMo.c10 = "";
-            mMo.c11 = "";
-            mMo.c12 = "";
-            mMo.c13 = "";
-            mMo.c14 = "";
-            mMo.c15 = "";
-            mMo.c16 = "";
-            mMo.c17 = "";
-            mMo.c18 = "";
-            mMo.c19 = "";
-            mMo.c20 = "";
-            mMo.c21 = "";
-            mMo.c22 = "";
-            mMo.c23 = "";
-            mMo.c24 = "";
-            mMo.c25 = "";
-            mMo.c26 = "";
-            mMo.c27 = "";
-            mMo.c28 = "";
-            mMo.c29 = "";
-            mMo.c30 = "";
-            return mMo;
-        }
+        //public SentToAPI ApproveList()
+        //{
+        //    SentToAPI mMo = new SentToAPI();
+        //    mMo.personnel_code = _userlogin.data.First().personnel_code;
+        //    mMo.storename = "APPROVELIST";
+        //    mMo.c1 = _userlogin.role.func.First().role_id;
+        //    mMo.c2 = "";
+        //    mMo.c3 = "";
+        //    mMo.c4 = "";
+        //    mMo.c5 = "";
+        //    mMo.c6 = "";
+        //    mMo.c7 = "";
+        //    mMo.c8 = "";
+        //    mMo.c9 = "";
+        //    mMo.c10 = "";
+        //    mMo.c11 = "";
+        //    mMo.c12 = "";
+        //    mMo.c13 = "";
+        //    mMo.c14 = "";
+        //    mMo.c15 = "";
+        //    mMo.c16 = "";
+        //    mMo.c17 = "";
+        //    mMo.c18 = "";
+        //    mMo.c19 = "";
+        //    mMo.c20 = "";
+        //    mMo.c21 = "";
+        //    mMo.c22 = "";
+        //    mMo.c23 = "";
+        //    mMo.c24 = "";
+        //    mMo.c25 = "";
+        //    mMo.c26 = "";
+        //    mMo.c27 = "";
+        //    mMo.c28 = "";
+        //    mMo.c29 = "";
+        //    mMo.c30 = "";
+        //    return mMo;
+        //}
     }
 }

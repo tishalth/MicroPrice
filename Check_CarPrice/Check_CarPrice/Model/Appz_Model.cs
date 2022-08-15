@@ -256,6 +256,7 @@ namespace Check_CarPrice.Model
             public string create_date { get; set; }
             public string create_by { get; set; }
             public string type_grp_car { get; set; }
+            public string code_KP { get; set; }
         }
 
         public class TypeCar

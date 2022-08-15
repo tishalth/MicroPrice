@@ -138,27 +138,27 @@ namespace Check_CarPrice.WebService
         //    }
         //}
 
-        public List<DataInformationTransactionCar> GetDataInformationTransactionCar()
-        {
-            Appz_WebService iAPI = new Appz_WebService();
-            client = iAPI.UAT("pj/API_car_price/index.php/Index/V_table/information_transaction_car");
-            //var client = ClienUAT("GetStyle1");
-            //var client = new RestClient("https://devapi.microleasingplc.com/pj/API_car_price/index.php/Index/select_group_car?");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Cookie", "PHPSESSID=2js0o743qvjjlbpvrcp5h018s1");
-            IRestResponse response = client.Execute(request);
-            if (response.Content == "{\"msg\":\"409\",\"data\":\"No Data\"}")
-            {
-                return null;
-            }
-            else
-            {
-                var posts = JsonConvert.DeserializeObject<InformationTransactionCar>(response.Content);
-                return posts.data;
-            }
+        //public List<DataInformationTransactionCar> GetDataInformationTransactionCar()
+        //{
+        //    Appz_WebService iAPI = new Appz_WebService();
+        //    client = iAPI.UAT("pj/API_car_price/index.php/Index/V_table/information_transaction_car");
+        //    //var client = ClienUAT("GetStyle1");
+        //    //var client = new RestClient("https://devapi.microleasingplc.com/pj/API_car_price/index.php/Index/select_group_car?");
+        //    client.Timeout = -1;
+        //    var request = new RestRequest(Method.GET);
+        //    request.AddHeader("Cookie", "PHPSESSID=2js0o743qvjjlbpvrcp5h018s1");
+        //    IRestResponse response = client.Execute(request);
+        //    if (response.Content == "{\"msg\":\"409\",\"data\":\"No Data\"}")
+        //    {
+        //        return null;
+        //    }
+        //    else
+        //    {
+        //        var posts = JsonConvert.DeserializeObject<InformationTransactionCar>(response.Content);
+        //        return posts.data;
+        //    }
 
-        }
+        //}
 
         public List<DataAccessories> GetDataAccessories()
         {
@@ -506,42 +506,74 @@ namespace Check_CarPrice.WebService
             var client = iAPI.UAT("pj/API_car_price/index.php/Index/store_ct");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Cookie", "PHPSESSID=lef4ikmp1otrnb8ag9kr9jn2t0");
-            request.AlwaysMultipartFormData = true;
-            request.AddParameter("store_name", dta.storename);
-            request.AddParameter("personnel_code", dta.personnel_code);
-            request.AddParameter("c1", dta.c1);
-            request.AddParameter("c2", "");
-            request.AddParameter("c3", "");
-            request.AddParameter("c4", "");
-            request.AddParameter("c5", "");
-            request.AddParameter("c6", "");
-            request.AddParameter("c7", "");
-            request.AddParameter("c8", "");
-            request.AddParameter("c9", "");
-            request.AddParameter("c10", "");
-            request.AddParameter("c11", "");
-            request.AddParameter("c12", "");
-            request.AddParameter("c13", "");
-            request.AddParameter("c14", "");
-            request.AddParameter("c15", "");
-            request.AddParameter("c16", "");
-            request.AddParameter("c17", "");
-            request.AddParameter("c18", "");
-            request.AddParameter("c19", "");
-            request.AddParameter("c20", "");
-            request.AddParameter("c21", "");
-            request.AddParameter("c22", "");
-            request.AddParameter("c23", "");
-            request.AddParameter("c24", "");
-            request.AddParameter("c25", "");
-            request.AddParameter("c26", "");
-            request.AddParameter("c27", "");
-            request.AddParameter("c28", "");
-            request.AddParameter("c29", "");
-            request.AddParameter("c30", "");
-            IRestResponse response = client.Execute(request);
-            if (response.Content == "{\"msg\":\"409\",\"data\":\"No Data\"}")
+                request.AddHeader("Cookie", "PHPSESSID=lef4ikmp1otrnb8ag9kr9jn2t0");
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("store_name", dta.storename);
+                request.AddParameter("personnel_code", dta.personnel_code);
+                request.AddParameter("c1", String.IsNullOrEmpty(dta.c1)?"":dta.c1);
+                request.AddParameter("c2", String.IsNullOrEmpty(dta.c2) ? "" : dta.c2);
+                request.AddParameter("c3", String.IsNullOrEmpty(dta.c3) ? "" : dta.c3);
+                request.AddParameter("c4", String.IsNullOrEmpty(dta.c4) ? "" : dta.c4);
+                request.AddParameter("c5", String.IsNullOrEmpty(dta.c5) ? "" : dta.c5);
+                request.AddParameter("c6", String.IsNullOrEmpty(dta.c6) ? "" : dta.c6);
+                request.AddParameter("c7", String.IsNullOrEmpty(dta.c7) ? "" : dta.c7);
+                request.AddParameter("c8", String.IsNullOrEmpty(dta.c8) ? "" : dta.c8);
+                request.AddParameter("c9", String.IsNullOrEmpty(dta.c9) ? "" : dta.c9);
+                request.AddParameter("c10",String.IsNullOrEmpty(dta.c10)?"" : dta.c10);
+                request.AddParameter("c11",String.IsNullOrEmpty(dta.c11)?"" : dta.c11);
+                request.AddParameter("c12",String.IsNullOrEmpty(dta.c12)?"" : dta.c12);
+                request.AddParameter("c13",String.IsNullOrEmpty(dta.c13)?"" : dta.c13);
+                request.AddParameter("c14",String.IsNullOrEmpty(dta.c14)?"" : dta.c14);
+                request.AddParameter("c15",String.IsNullOrEmpty(dta.c15)?"" : dta.c15);
+                request.AddParameter("c16",String.IsNullOrEmpty(dta.c16)?"" : dta.c16);
+                request.AddParameter("c17",String.IsNullOrEmpty(dta.c17)?"" : dta.c17);
+                request.AddParameter("c18",String.IsNullOrEmpty(dta.c18)?"" : dta.c18);
+                request.AddParameter("c19",String.IsNullOrEmpty(dta.c19)?"" : dta.c19);
+                request.AddParameter("c20",String.IsNullOrEmpty(dta.c20)?"" : dta.c20);
+                request.AddParameter("c21",String.IsNullOrEmpty(dta.c21)?"" : dta.c21);
+                request.AddParameter("c22",String.IsNullOrEmpty(dta.c22)?"" : dta.c22);
+                request.AddParameter("c23",String.IsNullOrEmpty(dta.c23)?"" : dta.c23);
+                request.AddParameter("c24",String.IsNullOrEmpty(dta.c24)?"" : dta.c24);
+                request.AddParameter("c25",String.IsNullOrEmpty(dta.c25)?"" : dta.c25);
+                request.AddParameter("c26",String.IsNullOrEmpty(dta.c26)?"" : dta.c26);
+                request.AddParameter("c27",String.IsNullOrEmpty(dta.c27)?"" : dta.c27);
+                request.AddParameter("c28",String.IsNullOrEmpty(dta.c28)?"" : dta.c28);
+                request.AddParameter("c29",String.IsNullOrEmpty(dta.c29)?"" : dta.c29);
+                request.AddParameter("c30", String.IsNullOrEmpty(dta.c30)?"" : dta.c30);
+
+
+                //request.AddParameter("c1", dta.c1 == null ? "" : dta.c1);
+                //request.AddParameter("c2", dta.c2 == null ? "" : dta.c2);
+                //request.AddParameter("c3", dta.c3 == null ? "" : dta.c3);
+                //request.AddParameter("c4", dta.c4 == null ? "" : dta.c4);
+                //request.AddParameter("c5", dta.c5 == null ? "" : dta.c5);
+                //request.AddParameter("c6", dta.c6 == null ? "" : dta.c6);
+                //request.AddParameter("c7", dta.c7 == null ? "" : dta.c7);
+                //request.AddParameter("c8", dta.c8 == null ? "" : dta.c8);
+                //request.AddParameter("c9", dta.c9 == null ? "" : dta.c9);
+                //request.AddParameter("c10", dta.c10 == null ? "" : dta.c10);
+                //request.AddParameter("c11", dta.c11 == null ? "" : dta.c11);
+                //request.AddParameter("c12", dta.c12 == null ? "" : dta.c12);
+                //request.AddParameter("c13", dta.c13 == null ? "" : dta.c13);
+                //request.AddParameter("c14", dta.c14 == null ? "" : dta.c14);
+                //request.AddParameter("c15", dta.c15 == null ? "" : dta.c15);
+                //request.AddParameter("c16", dta.c16 == null ? "" : dta.c16);
+                //request.AddParameter("c17", dta.c17 == null ? "" : dta.c17);
+                //request.AddParameter("c18", dta.c18 == null ? "" : dta.c18);
+                //request.AddParameter("c19", dta.c19 == null ? "" : dta.c19);
+                //request.AddParameter("c20", dta.c20 == null ? "" : dta.c20);
+                //request.AddParameter("c21", dta.c21 == null ? "" : dta.c21);
+                //request.AddParameter("c22", dta.c22 == null ? "" : dta.c22);
+                //request.AddParameter("c23", dta.c23 == null ? "" : dta.c23);
+                //request.AddParameter("c24", dta.c24 == null ? "" : dta.c24);
+                //request.AddParameter("c25", dta.c25 == null ? "" : dta.c25);
+                //request.AddParameter("c26", dta.c26 == null ? "" : dta.c26);
+                //request.AddParameter("c27", dta.c27 == null ? "" : dta.c27);
+                //request.AddParameter("c28", dta.c28 == null ? "" : dta.c28);
+                //request.AddParameter("c29", dta.c29 == null ? "" : dta.c29);
+                //request.AddParameter("c30", dta.c30 == null ? "" : dta.c30);
+                IRestResponse response = client.Execute(request);
+                if (response.Content == "{\"msg\":\"409\",\"data\":\"No Data\"}")
             {
                 return null;
             }

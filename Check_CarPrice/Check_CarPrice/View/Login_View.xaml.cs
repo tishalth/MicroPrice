@@ -46,7 +46,7 @@ namespace Check_CarPrice.View
         {
             InitializeComponent();
             txtusername.Text = Preferences.Get("Username", String.Empty);
-            txtpassword.Text = Preferences.Get("Password", String.Empty);
+            //txtpassword.Text = Preferences.Get("Password", String.Empty);
         }
 
         public async Task CheckVersion(User user)
@@ -101,143 +101,6 @@ namespace Check_CarPrice.View
                     }
                 }
 
-
-                #region
-                //await _connection.CreateTableAsync<DataAccessories>();
-                //var acc = await _connection.Table<DataAccessories>().ToListAsync();
-                //_accessories = new ObservableCollection<DataAccessories>(acc);
-                //if (_accessories.Count() == 0)
-                //{
-                //    var dataAcces = iapi.GetDataAccessories();
-                //    foreach (object data in dataAcces)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _accessories.Add((DataAccessories)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataCampaign>();
-                //var cam = await _connection.Table<DataCampaign>().ToListAsync();
-                //_campaign = new ObservableCollection<DataCampaign>(cam);
-                //if (_campaign.Count() == 0)
-                //{
-                //    var dataCam = iapi.GetCampaign();
-                //    foreach (object data in dataCam)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _campaign.Add((DataCampaign)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataCarPolicy>();
-                //var policy = await _connection.Table<DataCarPolicy>().ToListAsync();
-                //_policy = new ObservableCollection<DataCarPolicy>(policy);
-                //if (_policy.Count() == 0)
-                //{
-                //    var dataPolicy = iapi.GetDataCarPolicy();
-                //    foreach (object data in dataPolicy)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _policy.Add((DataCarPolicy)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataProvince>();
-                //var province = await _connection.Table<DataProvince>().ToListAsync();
-                //_province = new ObservableCollection<DataProvince>(province);
-                //if (_province.Count() == 0)
-                //{
-                //    var dataProvince = iapi.GetProvince();
-                //    foreach (object data in dataProvince)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _province.Add((DataProvince)data);
-                //    }
-                //}
-
-
-                //await _connection.CreateTableAsync<DataUseCarType>();
-                //var usecartype = await _connection.Table<DataUseCarType>().ToListAsync();
-                //_usecartype = new ObservableCollection<DataUseCarType>(usecartype);
-                //if (_usecartype.Count() == 0)
-                //{
-                //    var dataUsecartype = iapi.GetDataUseCarType();
-                //    foreach (object data in dataUsecartype)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _usecartype.Add((DataUseCarType)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataBrand>();
-                //var brand = await _connection.Table<DataBrand>().ToListAsync();
-                //_brand = new ObservableCollection<DataBrand>(brand);
-                //if (_brand.Count() == 0)
-                //{
-                //    var dataBrand = iapi.GetBrand();
-                //    foreach (object data in dataBrand)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _brand.Add((DataBrand)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataCharacterCar>();
-                //var charac = await _connection.Table<DataCharacterCar>().ToListAsync();
-                //_charactercar = new ObservableCollection<DataCharacterCar>(charac);
-                //if (_charactercar.Count() == 0)
-                //{
-                //    var dataCharac = iapi.GetDataCharacterCar();
-                //    foreach (object data in dataCharac)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _charactercar.Add((DataCharacterCar)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataTypeCar>();
-                //var typecarr = await _connection.Table<DataTypeCar>().ToListAsync();
-                //_typecar = new ObservableCollection<DataTypeCar>(typecarr);
-                //if (_typecar.Count() == 0)
-                //{
-                //    var dataTypecar = iapi.GetTypeCar();
-                //    foreach (object data in dataTypecar)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _typecar.Add((DataTypeCar)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataStatus>();
-                //var statuss = await _connection.Table<DataStatus>().ToListAsync();
-                //_status = new ObservableCollection<DataStatus>(statuss);
-                //if (_status.Count() == 0)
-                //{
-                //    var dataStatus = iapi.GetStatus();
-                //    foreach (object data in dataStatus)
-                //    {
-                //        await _connection.InsertAsync(data);
-
-                //        _status.Add((DataStatus)data);
-                //    }
-                //}
-
-                //await _connection.CreateTableAsync<DataGrantMapUser>();
-                //var grantmapuser = await _connection.Table<DataGrantMapUser>().ToListAsync();
-                //_gmapuser = new ObservableCollection<DataGrantMapUser>(grantmapuser);
-                //if (_gmapuser.Count() == 0)
-                //{
-                //    var dataGrantUser = iapi.GetGrantMapUser();
-                //    foreach (object data in dataGrantUser)
-                //    {
-                //        await _connection.InsertAsync(data);
-                //        _gmapuser.Add((DataGrantMapUser)data);
-                //    }
-
-                //}
-                //}
-
-                #endregion
 
             }
             catch (Exception ex)
@@ -354,20 +217,15 @@ namespace Check_CarPrice.View
             _province = new ObservableCollection<DataProvince>(province);
             if (_province.Count() == 0)
             {
-
-                var dataProvince = GetDataProvince();
+                SentToAPI mMo = new SentToAPI();
+                mMo.storename = "GETPROVINCE";
+                var dataProvince = GetDataProvince(mMo);
                 foreach (object data in dataProvince)
                 {
                     await _connection.InsertAsync(data);
                     _province.Add((DataProvince)data);
                 }
-               
-                //var dataProvince = iapi.GetProvince();
-                //foreach (object data in dataProvince)
-                //{
-                //    await _connection.InsertAsync(data);
-                //    _province.Add((DataProvince)data);
-                //}
+             
             }
 
 
@@ -459,7 +317,7 @@ namespace Check_CarPrice.View
             await Task.Delay(2000);
 
             var error = Validation();
-            if (error != "") await DisplayAlert("ผิดพลาด", error, "OK");
+            if (error != "") await DisplayAlert("ALERT", error, "OK");
             else
             {
                 var data = lWeb.PostUserLogin(txtusername.Text.Trim(), txtpassword.Text.Trim(), "S0010");
@@ -475,19 +333,9 @@ namespace Check_CarPrice.View
                 }
                 else
                 {
-                    //CreateUserTable(data);
-                    //var errorr = CheckData();
-                    //if (errorr != "")
-                    //{
-                    //    await DisplayAlert("ผิดพลาด", errorr, "ตกลง");
-                    //}
-                    //else
-                    //{
                         await CheckVersion(data);
                         Clear();
                         await Navigation.PushAsync(new MainPage(data));
-                    //}
-
                 }
             }
             PopupLoad.IsVisible = false;
@@ -510,10 +358,10 @@ namespace Check_CarPrice.View
             txtusername.Text = "";
         }
 
-        public List<DataProvince> GetDataProvince()
+        public List<DataProvince> GetDataProvince(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GetProvince());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 
@@ -521,44 +369,6 @@ namespace Check_CarPrice.View
                 return posts;
             }
             else return null;
-        }
-
-        public SentToAPI GetProvince()
-        {
-            SentToAPI mMo = new SentToAPI();
-          
-            mMo.storename = "GETPROVINCE";
-            mMo.c1 = "";
-            mMo.c2 = "";
-            mMo.c3 = "";
-            mMo.c4 = "";
-            mMo.c5 = "";
-            mMo.c6 = "";
-            mMo.c7 = "";
-            mMo.c8 = "";
-            mMo.c9 = "";
-            mMo.c10 = "";
-            mMo.c11 = "";
-            mMo.c12 = "";
-            mMo.c13 = "";
-            mMo.c14 = "";
-            mMo.c15 = "";
-            mMo.c16 = "";
-            mMo.c17 = "";
-            mMo.c18 = "";
-            mMo.c19 = "";
-            mMo.c20 = "";
-            mMo.c21 = "";
-            mMo.c22 = "";
-            mMo.c23 = "";
-            mMo.c24 = "";
-            mMo.c25 = "";
-            mMo.c26 = "";
-            mMo.c27 = "";
-            mMo.c28 = "";
-            mMo.c29 = "";
-            mMo.c30 = "";
-            return mMo;
         }
     }
 }

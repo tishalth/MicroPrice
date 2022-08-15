@@ -48,7 +48,12 @@ namespace Check_CarPrice.View.MenuCarPriceList
             _userlogin = user;
             datatran = dta;
 
-            var data = GETCARDETAILALL_lIST();
+            SentToAPI mMo = new SentToAPI();
+            mMo.personnel_code = _userlogin.data.First().personnel_code;
+            mMo.storename = "ST_CARDETAILALL_GET";
+            mMo.c1 = datatran.app_id;
+
+            var data = GETCARDETAILALL_lIST(mMo);
             if (data != null)
             {
                 _dta = data.FirstOrDefault();
@@ -121,6 +126,14 @@ namespace Check_CarPrice.View.MenuCarPriceList
             DisplayAlert("กรุณาแก้ไข", _dta.remark_cdecar, "ตกลง");
             InsertCarPrice_WebService iAPI = new InsertCarPrice_WebService();
             Appz_WebService aAPI = new Appz_WebService();
+
+            SentToAPI mMo_1 = new SentToAPI();
+            mMo_1.personnel_code = _userlogin.data.First().personnel_code;
+            mMo_1.storename = "ST_CARDETAILALL_GET";
+            mMo_1.c1 = _dta.app_id;
+            mMo_1.c2 = _dta.applno_car;
+            var datatwo = GETCARDETAILALL_lIST(mMo_1);
+
 
             enPersonal_code.Text = _dta.personnel_code;
             enPersonal_Name.Text = _dta.personnel_name;
@@ -228,44 +241,47 @@ namespace Check_CarPrice.View.MenuCarPriceList
                         }
                     }
 
-                    var dtaV2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
-
-                    pkConnectionSubMaster.SelectedIndex = dtaV2.type_contact == "1" ? 0 : dtaV2.type_contact == "2" ? 1 : 2;
-                    if (pkConnectionSubMaster.SelectedIndex == 0)
+                    //var dtaV2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
+                    if (datatwo != null)
                     {
-                        sbConnectionSubMaster1Name.Text = dtaV2.name_dealer_agent;
-                        sbConnectionSubMaster1Code.Text = dtaV2.cde_dealer_agent;
-                    }
-                    else if (pkConnectionSubMaster.SelectedIndex == 1)
-                    {
-                        sbConnectionSubMaster2Name.Text = dtaV2.name_dealer_agent;
-                        sbConnectionSubMaster2Code.Text = dtaV2.cde_dealer_agent;
-                    }
-                    else if (pkConnectionSubMaster.SelectedIndex == 2)
-                    {
-                        if (dtaV2.typ_person != "")
+                        var dtaV2 = datatwo.FirstOrDefault();
+                        pkConnectionSubMaster.SelectedIndex = dtaV2.type_contact == "1" ? 0 : dtaV2.type_contact == "2" ? 1 : 2;
+                        if (pkConnectionSubMaster.SelectedIndex == 0)
                         {
-                            pkSubMasAdvisorType.SelectedIndex = dtaV2.typ_person == "1" ? 0 : dtaV2.typ_person == "2" ? 1 : 2;
-                            if (pkSubMasAdvisorType.SelectedIndex == 0)
+                            sbConnectionSubMaster1Name.Text = dtaV2.name_dealer_agent;
+                            sbConnectionSubMaster1Code.Text = dtaV2.cde_dealer_agent;
+                        }
+                        else if (pkConnectionSubMaster.SelectedIndex == 1)
+                        {
+                            sbConnectionSubMaster2Name.Text = dtaV2.name_dealer_agent;
+                            sbConnectionSubMaster2Code.Text = dtaV2.cde_dealer_agent;
+                        }
+                        else if (pkConnectionSubMaster.SelectedIndex == 2)
+                        {
+                            if (dtaV2.typ_person != "")
                             {
-                                sbSubMasAdvisorType1Name.Text = dtaV2.name_contno;
-                                sbSubMasAdvisorType1Appno.Text = dtaV2.contno;
+                                pkSubMasAdvisorType.SelectedIndex = dtaV2.typ_person == "1" ? 0 : dtaV2.typ_person == "2" ? 1 : 2;
+                                if (pkSubMasAdvisorType.SelectedIndex == 0)
+                                {
+                                    sbSubMasAdvisorType1Name.Text = dtaV2.name_contno;
+                                    sbSubMasAdvisorType1Appno.Text = dtaV2.contno;
 
-                                lstSubMasAdvisorType1Name.IsVisible = false;
-                                lstSubMasAdvisorType1Appno.IsVisible = false;
-                            }
-                            else if (pkSubMasAdvisorType.SelectedIndex == 1)
-                            {
-                                enSubMasAdvisorType2Name.Text = dtaV2.name_cus;
-                                pkSubSocialtype.SelectedIndex = dtaV2.type_cont_channel == "1" ? 0 : dtaV2.type_cont_channel == "2" ? 1 : dtaV2.type_cont_channel == "3" ? 2 : 3;
-                            }
-                            else if (pkSubMasAdvisorType.SelectedIndex == 2)
-                            {
-                                sbSubMasAdvisorType3EmNo.Text = dtaV2.perosonal_cde;
-                                sbSubMasAdvisorType3Name.Text = dtaV2.personal_name;
+                                    lstSubMasAdvisorType1Name.IsVisible = false;
+                                    lstSubMasAdvisorType1Appno.IsVisible = false;
+                                }
+                                else if (pkSubMasAdvisorType.SelectedIndex == 1)
+                                {
+                                    enSubMasAdvisorType2Name.Text = dtaV2.name_cus;
+                                    pkSubSocialtype.SelectedIndex = dtaV2.type_cont_channel == "1" ? 0 : dtaV2.type_cont_channel == "2" ? 1 : dtaV2.type_cont_channel == "3" ? 2 : 3;
+                                }
+                                else if (pkSubMasAdvisorType.SelectedIndex == 2)
+                                {
+                                    sbSubMasAdvisorType3EmNo.Text = dtaV2.perosonal_cde;
+                                    sbSubMasAdvisorType3Name.Text = dtaV2.personal_name;
 
-                                lstSubMasAdvisorType3EmNo.IsVisible = false;
-                                lstSubMasAdvisorType3Name.IsVisible = false;
+                                    lstSubMasAdvisorType3EmNo.IsVisible = false;
+                                    lstSubMasAdvisorType3Name.IsVisible = false;
+                                }
                             }
                         }
                     }
@@ -273,153 +289,160 @@ namespace Check_CarPrice.View.MenuCarPriceList
             }
             else if (_dta.type_grp_car == "02")
             {
-                var dtaV2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
-                if (_dta.type_dealer == "1")
+                //var dtaV2 = aAPI.GetDataInformationTransactionCar().Where(a => a.applno_car == _dta.applno_car && a.app_id != _dta.app_id).FirstOrDefault();
+               
+                if (datatwo != null)
                 {
-                    frmMaster.IsVisible = true;
-                    frmSubMaster.IsVisible = false;
-                    pkConnectionMaster.SelectedIndex = _dta.type_contact == "1" ? 0 : _dta.type_contact == "2" ? 1 : 2;
-                    if (_dta.type_contact == "1")
+                    var dtaV2 = datatwo.FirstOrDefault();
+                    if (_dta.type_dealer == "1")
                     {
-                        sbConnectionMaster1Name.Text = _dta.name_dealer_agent;
-                        sbConnectionMaster1Code.Text = _dta.cde_dealer_agent;
-                        lstConnectionMaster1Name.IsVisible = false;
-                        lstConnectionMaster1Code.IsVisible = false;
-                    }
-                    else if (_dta.type_contact == "2")
-                    {
-                        sbConnectionMaster2Name.Text = _dta.name_dealer_agent;
-                        sbConnectionMaster2Code.Text = _dta.cde_dealer_agent;
-
-                        lstConnectionMaster2Name.IsVisible = false;
-                        lstConnectionMaster2Code.IsVisible = false;
-                    }
-                    else if (_dta.type_contact == "3")
-                    {
-                        if (_dta.typ_person != "")
+                        frmMaster.IsVisible = true;
+                        frmSubMaster.IsVisible = false;
+                        pkConnectionMaster.SelectedIndex = _dta.type_contact == "1" ? 0 : _dta.type_contact == "2" ? 1 : 2;
+                        if (_dta.type_contact == "1")
                         {
-                            pkMasAdvisorType.SelectedIndex = _dta.typ_person == "1" ? 0 : _dta.typ_person == "2" ? 1 : 2;
-                            if (pkMasAdvisorType.SelectedIndex == 0)
-                            {
-                                sbMasAdvisorType1Name.Text = _dta.name_contno;
-                                sbMasAdvisorType1Appno.Text = _dta.contno;
+                            sbConnectionMaster1Name.Text = _dta.name_dealer_agent;
+                            sbConnectionMaster1Code.Text = _dta.cde_dealer_agent;
+                            lstConnectionMaster1Name.IsVisible = false;
+                            lstConnectionMaster1Code.IsVisible = false;
+                        }
+                        else if (_dta.type_contact == "2")
+                        {
+                            sbConnectionMaster2Name.Text = _dta.name_dealer_agent;
+                            sbConnectionMaster2Code.Text = _dta.cde_dealer_agent;
 
-                                lstMasAdvisorType1Name.IsVisible = false;
-                                lstMasAdvisorType1Appno.IsVisible = false;
-                            }
-                            else if (pkMasAdvisorType.SelectedIndex == 1)
+                            lstConnectionMaster2Name.IsVisible = false;
+                            lstConnectionMaster2Code.IsVisible = false;
+                        }
+                        else if (_dta.type_contact == "3")
+                        {
+                            if (_dta.typ_person != "")
                             {
-                                enMasAdvisorType2Name.Text = _dta.name_cus;
-                                pkSocialtype.SelectedIndex = _dta.type_cont_channel == "1" ? 0 : _dta.type_cont_channel == "2" ? 1 : _dta.type_cont_channel == "3" ? 2 : 3;
-                            }
-                            else if (pkMasAdvisorType.SelectedIndex == 2)
-                            {
-                                sbMasAdvisorType3EmNo.Text = _dta.perosonal_cde;
-                                sbMasAdvisorType3Name.Text = _dta.personal_name;
+                                pkMasAdvisorType.SelectedIndex = _dta.typ_person == "1" ? 0 : _dta.typ_person == "2" ? 1 : 2;
+                                if (pkMasAdvisorType.SelectedIndex == 0)
+                                {
+                                    sbMasAdvisorType1Name.Text = _dta.name_contno;
+                                    sbMasAdvisorType1Appno.Text = _dta.contno;
 
-                                lstMasAdvisorType3EmNo.IsVisible = false;
-                                lstMasAdvisorType3Name.IsVisible = false;
+                                    lstMasAdvisorType1Name.IsVisible = false;
+                                    lstMasAdvisorType1Appno.IsVisible = false;
+                                }
+                                else if (pkMasAdvisorType.SelectedIndex == 1)
+                                {
+                                    enMasAdvisorType2Name.Text = _dta.name_cus;
+                                    pkSocialtype.SelectedIndex = _dta.type_cont_channel == "1" ? 0 : _dta.type_cont_channel == "2" ? 1 : _dta.type_cont_channel == "3" ? 2 : 3;
+                                }
+                                else if (pkMasAdvisorType.SelectedIndex == 2)
+                                {
+                                    sbMasAdvisorType3EmNo.Text = _dta.perosonal_cde;
+                                    sbMasAdvisorType3Name.Text = _dta.personal_name;
+
+                                    lstMasAdvisorType3EmNo.IsVisible = false;
+                                    lstMasAdvisorType3Name.IsVisible = false;
+                                }
                             }
                         }
+                    }
+                    else if (_dta.type_dealer == "2")
+                    {
+                        frmMaster.IsVisible = true;
+                        frmSubMaster.IsVisible = true;
+                        pkConnectionMaster.SelectedIndex = dtaV2.type_contact == "1" ? 0 : dtaV2.type_contact == "2" ? 1 : 2;
+                        if (dtaV2.type_contact == "1")
+                        {
+                            sbConnectionMaster1Name.Text = dtaV2.name_dealer_agent;
+                            sbConnectionMaster1Code.Text = dtaV2.cde_dealer_agent;
+                            lstConnectionMaster1Name.IsVisible = false;
+                            lstConnectionMaster1Code.IsVisible = false;
+                        }
+                        else if (dtaV2.type_contact == "2")
+                        {
+                            sbConnectionMaster2Name.Text = dtaV2.name_dealer_agent;
+                            sbConnectionMaster2Code.Text = dtaV2.cde_dealer_agent;
+
+                            lstConnectionMaster2Name.IsVisible = false;
+                            lstConnectionMaster2Code.IsVisible = false;
+                        }
+                        else if (dtaV2.type_contact == "3")
+                        {
+                            if (dtaV2.typ_person != "")
+                            {
+                                pkMasAdvisorType.SelectedIndex = dtaV2.typ_person == "1" ? 0 : dtaV2.typ_person == "2" ? 1 : 2;
+                                if (dtaV2.typ_person == "1")
+                                {
+                                    sbMasAdvisorType1Name.Text = dtaV2.name_contno;
+                                    sbMasAdvisorType1Appno.Text = dtaV2.contno;
+
+                                    lstMasAdvisorType1Name.IsVisible = false;
+                                    lstMasAdvisorType1Appno.IsVisible = false;
+                                }
+                                else if (dtaV2.typ_person == "2")
+                                {
+                                    enMasAdvisorType2Name.Text = dtaV2.name_cus;
+                                    pkSocialtype.SelectedIndex = dtaV2.type_cont_channel == "1" ? 0 : dtaV2.type_cont_channel == "2" ? 1 : dtaV2.type_cont_channel == "3" ? 2 : 3;
+                                }
+                                else if (dtaV2.typ_person == "3")
+                                {
+                                    sbMasAdvisorType3EmNo.Text = dtaV2.perosonal_cde;
+                                    sbMasAdvisorType3Name.Text = dtaV2.personal_name;
+
+                                    lstMasAdvisorType3EmNo.IsVisible = false;
+                                    lstMasAdvisorType3Name.IsVisible = false;
+                                }
+                            }
+                        }
+
+                        pkConnectionSubMaster.SelectedIndex = _dta.type_contact == "1" ? 0 : _dta.type_contact == "2" ? 1 : 2;
+                        if (_dta.type_contact == "1")
+                        {
+                            sbConnectionSubMaster1Name.Text = _dta.name_dealer_agent;
+                            sbConnectionSubMaster1Code.Text = _dta.cde_dealer_agent;
+                            lstConnectionSubMaster1Name.IsVisible = false;
+                            lstConnectionSubMaster1Code.IsVisible = false;
+                        }
+                        else if (_dta.type_contact == "2")
+                        {
+                            sbConnectionSubMaster2Name.Text = _dta.name_dealer_agent;
+                            sbConnectionSubMaster2Code.Text = _dta.cde_dealer_agent;
+
+                            lstConnectionSubMaster2Name.IsVisible = false;
+                            lstConnectionSubMaster2Code.IsVisible = false;
+                        }
+                        else if (_dta.type_contact == "3")
+                        {
+                            if (_dta.typ_person != "")
+                            {
+                                pkSubMasAdvisorType.SelectedIndex = _dta.typ_person == "1" ? 0 : _dta.typ_person == "2" ? 1 : 2;
+                                if (_dta.typ_person == "1")
+                                {
+                                    sbSubMasAdvisorType1Name.Text = _dta.name_contno;
+                                    sbSubMasAdvisorType1Appno.Text = _dta.contno;
+
+                                    lstSubMasAdvisorType1Name.IsVisible = false;
+                                    lstSubMasAdvisorType1Appno.IsVisible = false;
+                                }
+                                else if (_dta.typ_person == "2")
+                                {
+                                    enSubMasAdvisorType2Name.Text = _dta.name_cus;
+                                    pkSubSocialtype.SelectedIndex = _dta.type_cont_channel == "1" ? 0 : _dta.type_cont_channel == "2" ? 1 : _dta.type_cont_channel == "3" ? 2 : 3;
+                                }
+                                else if (_dta.typ_person == "3")
+                                {
+                                    sbSubMasAdvisorType3EmNo.Text = _dta.perosonal_cde;
+                                    sbSubMasAdvisorType3Name.Text = _dta.personal_name;
+
+                                    lstSubMasAdvisorType3EmNo.IsVisible = false;
+                                    lstSubMasAdvisorType3Name.IsVisible = false;
+                                }
+                            }
+                        }
+
                     }
                 }
-                else if (_dta.type_dealer == "2")
-                {
-                    frmMaster.IsVisible = true;
-                    frmSubMaster.IsVisible = true;
-                    pkConnectionMaster.SelectedIndex = dtaV2.type_contact == "1" ? 0 : dtaV2.type_contact == "2" ? 1 : 2;
-                    if (dtaV2.type_contact == "1")
-                    {
-                        sbConnectionMaster1Name.Text = dtaV2.name_dealer_agent;
-                        sbConnectionMaster1Code.Text = dtaV2.cde_dealer_agent;
-                        lstConnectionMaster1Name.IsVisible = false;
-                        lstConnectionMaster1Code.IsVisible = false;
-                    }
-                    else if (dtaV2.type_contact == "2")
-                    {
-                        sbConnectionMaster2Name.Text = dtaV2.name_dealer_agent;
-                        sbConnectionMaster2Code.Text = dtaV2.cde_dealer_agent;
 
-                        lstConnectionMaster2Name.IsVisible = false;
-                        lstConnectionMaster2Code.IsVisible = false;
-                    }
-                    else if (dtaV2.type_contact == "3")
-                    {
-                        if (dtaV2.typ_person != "")
-                        {
-                            pkMasAdvisorType.SelectedIndex = dtaV2.typ_person == "1" ? 0 : dtaV2.typ_person == "2" ? 1 : 2;
-                            if (dtaV2.typ_person == "1")
-                            {
-                                sbMasAdvisorType1Name.Text = dtaV2.name_contno;
-                                sbMasAdvisorType1Appno.Text = dtaV2.contno;
 
-                                lstMasAdvisorType1Name.IsVisible = false;
-                                lstMasAdvisorType1Appno.IsVisible = false;
-                            }
-                            else if (dtaV2.typ_person == "2")
-                            {
-                                enMasAdvisorType2Name.Text = dtaV2.name_cus;
-                                pkSocialtype.SelectedIndex = dtaV2.type_cont_channel == "1" ? 0 : dtaV2.type_cont_channel == "2" ? 1 : dtaV2.type_cont_channel == "3" ? 2 : 3;
-                            }
-                            else if (dtaV2.typ_person == "3")
-                            {
-                                sbMasAdvisorType3EmNo.Text = dtaV2.perosonal_cde;
-                                sbMasAdvisorType3Name.Text = dtaV2.personal_name;
-
-                                lstMasAdvisorType3EmNo.IsVisible = false;
-                                lstMasAdvisorType3Name.IsVisible = false;
-                            }
-                        }
-                    }
-
-                    pkConnectionSubMaster.SelectedIndex = _dta.type_contact == "1" ? 0 : _dta.type_contact == "2" ? 1 : 2;
-                    if (_dta.type_contact == "1")
-                    {
-                        sbConnectionSubMaster1Name.Text = _dta.name_dealer_agent;
-                        sbConnectionSubMaster1Code.Text = _dta.cde_dealer_agent;
-                        lstConnectionSubMaster1Name.IsVisible = false;
-                        lstConnectionSubMaster1Code.IsVisible = false;
-                    }
-                    else if (_dta.type_contact == "2")
-                    {
-                        sbConnectionSubMaster2Name.Text = _dta.name_dealer_agent;
-                        sbConnectionSubMaster2Code.Text = _dta.cde_dealer_agent;
-
-                        lstConnectionSubMaster2Name.IsVisible = false;
-                        lstConnectionSubMaster2Code.IsVisible = false;
-                    }
-                    else if (_dta.type_contact == "3")
-                    {
-                        if (_dta.typ_person != "")
-                        {
-                            pkSubMasAdvisorType.SelectedIndex = _dta.typ_person == "1" ? 0 : _dta.typ_person == "2" ? 1 : 2;
-                            if (_dta.typ_person == "1")
-                            {
-                                sbSubMasAdvisorType1Name.Text = _dta.name_contno;
-                                sbSubMasAdvisorType1Appno.Text = _dta.contno;
-
-                                lstSubMasAdvisorType1Name.IsVisible = false;
-                                lstSubMasAdvisorType1Appno.IsVisible = false;
-                            }
-                            else if (_dta.typ_person == "2")
-                            {
-                                enSubMasAdvisorType2Name.Text = _dta.name_cus;
-                                pkSubSocialtype.SelectedIndex = _dta.type_cont_channel == "1" ? 0 : _dta.type_cont_channel == "2" ? 1 : _dta.type_cont_channel == "3" ? 2 : 3;
-                            }
-                            else if (_dta.typ_person == "3")
-                            {
-                                sbSubMasAdvisorType3EmNo.Text = _dta.perosonal_cde;
-                                sbSubMasAdvisorType3Name.Text = _dta.personal_name;
-
-                                lstSubMasAdvisorType3EmNo.IsVisible = false;
-                                lstSubMasAdvisorType3Name.IsVisible = false;
-                            }
-                        }
-                    }
-
-                }
             }
-            
+
 
             pkNote.SelectedIndex = _dta.remark_transactioncar == "1" ? 0 : _dta.remark_transactioncar == "2" ? 1 : 2;
             if (_dta.remark_transactioncar == "1")
@@ -910,7 +933,11 @@ namespace Check_CarPrice.View.MenuCarPriceList
             try
             {
                 Update_Webservice iModel = new Update_Webservice();
-                var olddata = IMAGE_GET();
+                SentToAPI mMo = new SentToAPI();
+                mMo.personnel_code = _userlogin.data.First().personnel_code;
+                mMo.storename = "ST_IMAGE_GET";
+                mMo.c1 = _dta.app_id;
+                var olddata = IMAGE_GET(mMo);
                 if (olddata != null)
                 //if (iModel.GetDataPicture() != null)
                 {
@@ -2025,10 +2052,10 @@ namespace Check_CarPrice.View.MenuCarPriceList
             pkCamPaign.SelectedIndex = -1;
         }
 
-        public List<DataPicture> IMAGE_GET()
+        public List<DataPicture> IMAGE_GET(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GETCARDETAIL());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 
@@ -2077,10 +2104,10 @@ namespace Check_CarPrice.View.MenuCarPriceList
             return mMo;
         }
 
-        public List<DataCarDetail> GETCARDETAILALL_lIST()
+        public List<DataCarDetail> GETCARDETAILALL_lIST(SentToAPI mMo)
         {
             Appz_WebService iAPI = new Appz_WebService();
-            var response = iAPI.Sent(GETCARDETAILALL());
+            var response = iAPI.Sent(mMo);
             if (response != null)
             {
 
